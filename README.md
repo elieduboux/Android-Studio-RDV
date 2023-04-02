@@ -8,4 +8,9 @@ Created as a unit project in the 4th year ... at ESIEE Paris.
 Elie DUBOUX   
 Kenza ANKI
 
-https://www.freepik.com/
+
+Source :
+
+Icons :
+https://www.flaticon.com/fr/auteurs/tanah-basah --> calendar icon
+https://www.freepik.com/ --> profile icon
