@@ -32,10 +32,10 @@ public class RdvDetail extends AppCompatActivity {
         Boolean state = rdv.getState();
         String date = rdv.getDate();
 
-        TextView txtTitle = findViewById(R.id.rdv_details_title);
-        CheckBox cbOver   = findViewById(R.id.rdv_details_over);
-        ImageView imDate  = findViewById(R.id.rdv_details_date_icon);
-        TextView txtDate  = findViewById(R.id.rdv_details_date);
+        txtTitle = findViewById(R.id.rdv_details_title);
+        cbOver   = findViewById(R.id.rdv_details_over);
+        imDate  = findViewById(R.id.rdv_details_date_icon);
+        txtDate  = findViewById(R.id.rdv_details_date);
 
         txtTitle.setText(title);
         cbOver.setChecked(state);
