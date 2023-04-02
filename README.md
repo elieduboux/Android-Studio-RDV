@@ -17,8 +17,8 @@ Several parts of the code were inspired by the exemples in the lessons.
 ### Icons :   
 https://www.flaticon.com/fr/auteurs/gregor-cresnar --> settings icon    
 https://www.flaticon.com/fr/auteurs/tanah-basah --> calendar icon   
-https://www.flaticon.com/authors/kiranshastry --> rdv list icon   
 https://www.flaticon.com/authors/arafat-uddin --> new rdv icon   
+https://www.flaticon.com/authors/kiranshastry --> rdv list icon   
 https://www.flaticon.com/fr/auteurs/sonnycandra --> call icon   
 https://www.freepik.com/ --> profile icon   
 
