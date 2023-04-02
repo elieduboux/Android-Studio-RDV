@@ -36,6 +36,7 @@ public class Rdv implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(date);
         dest.writeBoolean(state);

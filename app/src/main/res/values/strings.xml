@@ -22,11 +22,15 @@
 
     <string name="new_rdv_title_tv">Title</string>
     <string name="new_rdv_title_et">Ex : My new rdv</string>
+    <string name="new_rdv_date_et">Ex : 05/08/2023</string>
+    <string name="new_rdv_button_validate">Validate</string>
 
     <string name="menu_settings">Settings</string>
     <string name="menu_new_rdv">New RDV</string>
     <string name="menu_rdv_list">RDV list</string>
     <string name="menu_back_arrow">Back arrow</string>
+
+    <string name="tv_empty">No items founds</string>
 
 
 </resources>

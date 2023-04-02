@@ -14,11 +14,21 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class RdvList extends AppCompatActivity {
+    private DataBaseHelper myHelper;
+
+    private ListView lvRdvs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv_list);
+
+        myHelper=new DataBaseHelper(this);
+        myHelper.open();
+
+        lvRdvs = (ListView) findViewById(R.id.myListView);
+        lvRdvs.setEmptyView(findViewById(R.id.tvEmpty));
+
         ArrayList<Rdv> arrayOfRdv= new ArrayList<>();
         Rdv test1 = new Rdv(1, "one"  , "02-04-2023", false);
         Rdv test2 = new Rdv(2, "two"  , "02-05-2023", true);
