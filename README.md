@@ -1,4 +1,4 @@
-# Rdv Manager
+# RDV Manager
 
 A Student project of a platform that allows the user to manage his appointments.   
 Coded in java with the IDE Android studio.   
