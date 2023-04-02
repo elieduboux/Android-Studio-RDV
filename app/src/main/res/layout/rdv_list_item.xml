@@ -24,6 +24,7 @@
         android:layout_width="98dp"
         android:layout_height="70dp"
         android:text="@string/rdv_list_over"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_title"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title" />
 

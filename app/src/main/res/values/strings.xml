@@ -9,7 +9,7 @@
     <string name="profile_image_content_text">Profile</string>
     <string name="rdv_list_title">title</string>
     <string name="rdv_list_over">over</string>
-    <string name="textView">Text View</string>
+    <string name="text_view">Text View</string>
     <string name="rdv_details_button">validate</string>
 
 </resources>

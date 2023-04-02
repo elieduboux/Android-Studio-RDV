@@ -5,7 +5,7 @@
     android:id="@+id/textView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/textView"
-    android:textColor="@color/teal_200"
+    android:text="@string/text_view"
+    android:textColor="@color/black"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

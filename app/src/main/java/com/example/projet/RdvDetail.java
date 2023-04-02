@@ -6,16 +6,18 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RdvDetails extends AppCompatActivity {
+public class RdvDetail extends AppCompatActivity {
 
     private TextView  txtTitle;
     private CheckBox  cbOver;
     private ImageView imDate;
     private TextView  txtDate;
+    private Rdv rdv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,8 +25,8 @@ public class RdvDetails extends AppCompatActivity {
         setContentView(R.layout.rdv_details);
 
         Intent intent= getIntent();
-        Bundle b = intent.getExtras();
-        Rdv rdv = b.getParcelable("rdv");
+        Bundle rdvReceived = intent.getExtras();
+        rdv = rdvReceived.getParcelable("rdv");
 
         String title = rdv.getTitle();
         Boolean state = rdv.getState();
@@ -44,12 +46,19 @@ public class RdvDetails extends AppCompatActivity {
     public void onValidate(View v)
     {
         Intent intent= new Intent(this, RdvList.class);
-        Rdv rdv = new Rdv();
-        rdv.setTitle(txtTitle.getText().toString());
-        rdv.setDate(txtDate.getText().toString());
-        rdv.setState(cbOver.isChecked());
+        Rdv rdvTmp = new Rdv();
+        try {
+            rdvTmp.setTitle(txtTitle.getText().toString());
+            rdvTmp.setDate(txtDate.getText().toString());
+            rdvTmp.setState(cbOver.isChecked());
+            intent.putExtra("rdv", rdvTmp);
 
-        intent.putExtra("rdv", rdv);
+        }catch(Exception e) {
+            Toast.makeText(RdvDetail.this,"Error, something probably null," +
+                    "Passing the previous elements !",Toast.LENGTH_LONG).show();
+            intent.putExtra("rdv", rdv);
+        }
+
         this.startActivity(intent);
     }
 

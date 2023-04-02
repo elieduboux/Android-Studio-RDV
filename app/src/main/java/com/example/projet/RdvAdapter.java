@@ -28,12 +28,11 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         TextView  txtDate;
     }
 
-    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
     {
-        ViewHolder holder;
+        ViewHolder holder = null;
         if(convertView == null)
         {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.rdv_list_item,null, false);
