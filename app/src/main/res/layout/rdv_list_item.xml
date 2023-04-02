@@ -6,6 +6,56 @@
     android:layout_height="match_parent"
     android:padding="5dp">
 
+    <TextView
+        android:id="@+id/rdv_list_item_title"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="25dp"
+        android:text="@+id/title"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="title" />
+    <CheckBox
+        android:id="@+id/rdv_list_item_over"
+        android:layout_width="98dp"
+        android:layout_height="70dp"
+        android:text="@string/rdv_list_over"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_title"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title" />
 
+    <ImageView
+        android:id="@+id/rdv_list_item_date_icon"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_title"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title"
+        tools:srcCompat="@drawable/day_calendar" />
+    <TextView
+        android:id="@+id/rdv_list_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="@+id/day"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_date_icon"
+        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_date_icon"
+        tools:text="day yyyy/mm/dd" />
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/rdv_list_item_phone_icon"-->
+<!--        android:layout_width="43dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:contentDescription="@string/profile_image_content_text"-->
+<!--        android:scaleType="centerInside"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_title"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title"-->
+<!--        tools:srcCompat="@drawable/day_calendar" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package com.example.projet;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,46 +22,43 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
     }
 
     static class ViewHolder {
-        ImageView image;
-        TextView txtLastName;
-        TextView txtFirstName;
-        TextView date;
-        TextView domain;
+        TextView  txtTitle;
+        CheckBox  cbOver;
+        ImageView imDate;
+        TextView  txtDate;
     }
 
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
     {
-        ViewHolder holder = null;
+        ViewHolder holder;
         if(convertView == null)
         {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_list_item,null, false);
-            ImageView image = (ImageView) convertView.findViewById(R.id.logo);
-            TextView txtFirstName = (TextView) convertView.findViewById(R.id.label);
-            TextView txtLastName  = (TextView) convertView.findViewById(R.id.label2);
-            TextView date = (TextView) convertView.findViewById(R.id.dateOfBirth);
-            TextView domain = (TextView) convertView.findViewById(R.id.domain);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.rdv_list_item,null, false);
+            TextView txtTitle = convertView.findViewById(R.id.rdv_list_item_title);
+            CheckBox cbOver   = convertView.findViewById(R.id.rdv_list_item_over);
+            ImageView imDate  = convertView.findViewById(R.id.rdv_list_item_date_icon);
+            TextView txtDate  = convertView.findViewById(R.id.rdv_list_item_date);
 
             holder = new ViewHolder();
-            holder.image = image;
-            holder.txtLastName = txtLastName;
-            holder.txtFirstName = txtFirstName;
-            holder.date = date;
-            holder.domain = domain;
+            holder.txtTitle = txtTitle;
+            holder.cbOver = cbOver;
+            holder.imDate = imDate;
+            holder.txtDate = txtDate;
             convertView.setTag(holder);
         }
         else
             holder = (ViewHolder) convertView.getTag();
 
-        Actor actor = getItem(position);
-        if (actor != null)
+        Rdv rdv = getItem(position);
+        if (rdv != null)
         {
-            holder.txtLastName.setText(actor.lastName);
-            holder.txtFirstName.setText(actor.firstName);
-            holder.image.setImageResource((actor.photo));
-            holder.date.setText(actor.dateOfBirth);
-            holder.domain.setText(actor.domain);
+            holder.txtTitle.setText(rdv.title);
+            holder.cbOver.setChecked(rdv.state);
+            holder.imDate.setImageResource(R.drawable.day_calendar);
+            holder.txtDate.setText(rdv.date);
         }
         return convertView;
     }
