@@ -9,9 +9,9 @@ Elie DUBOUX
 Kenza ANKI
 
 
-Source :
+## Source :
 
-Icons :
+### Icons :   
 https://www.flaticon.com/fr/auteurs/tanah-basah --> calendar icon   
 https://www.freepik.com/ --> profile icon   
 https://www.flaticon.com/fr/auteurs/sonnycandra --> call icon   
