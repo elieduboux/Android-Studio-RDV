@@ -12,7 +12,7 @@ Kenza ANKI
 ## Source :
 
 ### Code :
-several parts of the code were inspired by the exemples in the lessons.
+Several parts of the code were inspired by the exemples in the lessons.   
 
 ### Icons :   
 https://www.flaticon.com/fr/auteurs/gregor-cresnar --> settings icon    
