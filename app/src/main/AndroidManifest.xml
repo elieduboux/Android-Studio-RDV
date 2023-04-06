@@ -15,7 +15,7 @@
         <activity
             android:name=".RdvDetail" android:exported="false" android:label="@string/rdv_details"/>
         <activity
-            android:name=".Settings" android:exported="false" android:label="@string/rdv_details"/>
+            android:name=".Settings" android:exported="false" android:label="@string/settings"/>
         <activity
             android:name=".NewRdv" android:exported="false" android:label="@string/new_rdv"/>
 

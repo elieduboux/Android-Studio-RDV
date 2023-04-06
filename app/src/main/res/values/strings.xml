@@ -14,6 +14,7 @@
     <string name="rdv_list_title">title</string>
     <string name="rdv_list_over">over</string>
     <string name="rdv_details_button">validate</string>
+    <string name="rdv_details_hint_date">Ex : yyyy/mm/dd</string>
 
     <string name="text_view">Text View</string>
 

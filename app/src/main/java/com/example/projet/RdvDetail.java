@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RdvDetail extends AppCompatActivity {
 
     private TextView  txtTitle;
+    private EditText  edTitle;
     private CheckBox  cbOver;
     private ImageView imDate;
+    private EditText edDate;
     private TextView  txtDate;
     private Rdv rdv;
 
@@ -33,17 +36,19 @@ public class RdvDetail extends AppCompatActivity {
 
         String title = rdv.getTitle();
         Boolean state = rdv.getState();
-        String date = rdv.getDate();
+//        String date = rdv.getDate();
 
-        txtTitle = findViewById(R.id.rdv_details_title);
+        txtTitle = findViewById(R.id.rdv_details_tv_title);
+        edTitle  = findViewById(R.id.rdv_details_ed_title);
         cbOver   = findViewById(R.id.rdv_details_over);
-        imDate  = findViewById(R.id.rdv_details_date_icon);
-        txtDate  = findViewById(R.id.rdv_details_date);
+        imDate   = findViewById(R.id.rdv_details_date_icon);
+        edDate   = findViewById(R.id.editTextDate);
+//        txtDate  = findViewById(R.id.rdv_details_date);
 
-        txtTitle.setText(title);
+        edTitle.setAutofillHints(title);
         cbOver.setChecked(state);
         imDate.setImageResource(R.drawable.day_calendar);
-        txtDate.setText(date);
+//        txtDate.setText(date);
     }
 
     public void onValidate(View v)
@@ -51,8 +56,9 @@ public class RdvDetail extends AppCompatActivity {
         Intent intent= new Intent(this, RdvList.class);
         Rdv rdvTmp = new Rdv();
         try {
-            rdvTmp.setTitle(txtTitle.getText().toString());
-            rdvTmp.setDate(txtDate.getText().toString());
+
+            rdvTmp.setTitle(edTitle.getText().toString());
+            rdvTmp.setDate(edDate.getText().toString());
             rdvTmp.setState(cbOver.isChecked());
             intent.putExtra("rdv", rdvTmp);
 
