@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
         android:text="@string/new_rdv_button_validate"
-        android:onClick="OnClick"
+        android:onClick="saveRdv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

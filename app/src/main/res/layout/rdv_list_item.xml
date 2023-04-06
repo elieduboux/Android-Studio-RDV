@@ -48,15 +48,15 @@
         app:layout_constraintTop_toTopOf="@+id/rdv_list_item_date_icon"
         tools:text="day yyyy/mm/dd" />
 
+    <TextView
+        android:id="@+id/rdv_list_item_tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rdv_list_tv_id"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_date"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_over"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_date"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/rdv_list_item_phone_icon"-->
-<!--        android:layout_width="43dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:contentDescription="@string/profile_image_content_text"-->
-<!--        android:scaleType="centerInside"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_title"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title"-->
-<!--        tools:srcCompat="@drawable/day_calendar" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

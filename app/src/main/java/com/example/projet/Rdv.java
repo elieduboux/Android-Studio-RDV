@@ -28,10 +28,17 @@ public class Rdv implements Parcelable {
         this.state = state;
     }
 
+    public Rdv(String title, String date, Boolean state) {
+        this.title = title;
+        this.date = date;
+        this.state = state;
+    }
+
     public Rdv(Parcel parcel) {
-        title=parcel.readString();
-        date=parcel.readString();
-        state=parcel.readBoolean();
+        id    = parcel.readInt();
+        title = parcel.readString();
+        date  = parcel.readString();
+        state = parcel.readBoolean();
     }
 
     @Override

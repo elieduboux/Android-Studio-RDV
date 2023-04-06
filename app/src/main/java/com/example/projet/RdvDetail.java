@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RdvDetail extends AppCompatActivity {
 
+    private DataBaseHelper myHelper;
     private TextView  txtTitle;
     private EditText  edTitle;
     private CheckBox  cbOver;
@@ -25,30 +26,40 @@ public class RdvDetail extends AppCompatActivity {
     private TextView  txtDate;
     private Rdv rdv;
 
+    private boolean fromAdd;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv_details);
 
-        Intent intent= getIntent();
-        Bundle rdvReceived = intent.getExtras();
-        rdv = rdvReceived.getParcelable("rdv");
-
-        String title = rdv.getTitle();
-        Boolean state = rdv.getState();
-//        String date = rdv.getDate();
-
         txtTitle = findViewById(R.id.rdv_details_tv_title);
         edTitle  = findViewById(R.id.rdv_details_ed_title);
         cbOver   = findViewById(R.id.rdv_details_over);
-        imDate   = findViewById(R.id.rdv_details_date_icon);
         edDate   = findViewById(R.id.editTextDate);
-//        txtDate  = findViewById(R.id.rdv_details_date);
-
-        edTitle.setAutofillHints(title);
-        cbOver.setChecked(state);
+        txtDate  = findViewById(R.id.rdv_details_date);
+        imDate   = findViewById(R.id.rdv_details_date_icon);
         imDate.setImageResource(R.drawable.day_calendar);
-//        txtDate.setText(date);
+
+        myHelper = new DataBaseHelper(this);
+        myHelper.open();
+
+        Intent intent= getIntent();
+        fromAdd= intent.getBooleanExtra("fromAdd",false);
+
+        if (!fromAdd) {
+            Bundle rdvReceived = intent.getExtras();
+            rdv = rdvReceived.getParcelable("rdv");
+
+            String id     = String.valueOf(rdv.getId());
+            String title  = rdv.getTitle();
+            String date   = rdv.getDate();
+            Boolean state = rdv.getState();
+
+            edTitle.setHint(title);
+            cbOver.setChecked(state);
+            txtDate.setText(date);
+        };
     }
 
     public void onValidate(View v)

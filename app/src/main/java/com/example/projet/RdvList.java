@@ -3,19 +3,22 @@ package com.example.projet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class RdvList extends AppCompatActivity {
     private DataBaseHelper myHelper;
-
     private ListView lvRdvs;
 
     @Override
@@ -23,50 +26,32 @@ public class RdvList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv_list);
 
-        myHelper=new DataBaseHelper(this);
+        myHelper = new DataBaseHelper(this);
         myHelper.open();
 
         lvRdvs = (ListView) findViewById(R.id.myListView);
         lvRdvs.setEmptyView(findViewById(R.id.tvEmpty));
 
-        ArrayList<Rdv> arrayOfRdv= new ArrayList<>();
-        Rdv test1 = new Rdv(1, "one"  , "02-04-2023", false);
-        Rdv test2 = new Rdv(2, "two"  , "02-05-2023", true);
-        Rdv test3 = new Rdv(3, "three", "02-06-2023", true);
-        Rdv test4 = new Rdv(4, "three", "02-06-2023", true);
-        Rdv test5 = new Rdv(5, "three", "02-06-2023", false);
-        Rdv test6 = new Rdv(6, "three", "02-06-2023", true);
-        Rdv test7 = new Rdv(7, "three", "02-06-2023", true);
+        chargeData();
 
-        arrayOfRdv.add(test1);
-        arrayOfRdv.add(test2);
-        arrayOfRdv.add(test3);
-        arrayOfRdv.add(test4);
-        arrayOfRdv.add(test5);
-        arrayOfRdv.add(test6);
-        arrayOfRdv.add(test7);
-
-        RdvAdapter adapter  = new RdvAdapter(this,R.layout.simple_item_list,arrayOfRdv);
-        ListView myListView = findViewById(R.id.myListView);
-        myListView.setAdapter(adapter);
-
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvRdvs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-//                Toast.makeText(RdvList.this,"Item "+position+" selected",Toast.LENGTH_LONG).show();
-                Intent intent   = new Intent(RdvList.this, RdvDetail.class);
-                Rdv rdvTmp1 = new Rdv();
-                Rdv rdvTmp2 = arrayOfRdv.get(position);
+                String idItem= ((TextView)view.findViewById(R.id.rdv_list_item_tv_id)).getText().toString();
+                String titleItem= ((TextView)view.findViewById(R.id.rdv_list_item_title)).getText().toString();
+                String dateItem= ((TextView)view.findViewById(R.id.rdv_list_item_date)).getText().toString();
+                CheckBox cbState = view.findViewById(R.id.rdv_list_item_over);
+                Boolean stateItem = cbState.isChecked();
 
-                rdvTmp1.setTitle(rdvTmp2.getTitle());
-                rdvTmp1.setDate(rdvTmp2.getDate());
-                rdvTmp1.setState(rdvTmp2.getState());
+                Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,stateItem);
+                Intent intent = new Intent(getApplicationContext(), RdvDetail.class);
+                intent.putExtra("rdv",rdv);
 
-                intent.putExtra("rdv", rdvTmp1);
+                intent.putExtra("fromAdd",false);
                 startActivity(intent);
             }
         });
-    }
+     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,6 +76,17 @@ public class RdvList extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void chargeData(){
+        final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,
+                DataBaseHelper.DATE, DataBaseHelper.STATE};
+        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date};
+
+        Cursor c = myHelper.getAllRdv();
+        SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.rdv_list_item,c,from,to,0);
+        adapter.notifyDataSetChanged();
+        lvRdvs.setAdapter(adapter);
     }
 
 }

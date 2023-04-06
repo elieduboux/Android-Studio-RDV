@@ -6,15 +6,28 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NewRdv extends AppCompatActivity {
 
+    private DataBaseHelper myHelper;
+    private EditText etTitle;
+
+    private EditText etDate;
+
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_rdv);
+
+        etTitle  = findViewById(R.id.new_rdv_title_et);
+        etDate   = findViewById(R.id.new_rdv_date_ed);
+
+        myHelper = new DataBaseHelper(this);
+        myHelper.open();
     }
 
     @Override
@@ -42,8 +55,15 @@ public class NewRdv extends AppCompatActivity {
         }
     }
 
-    public void OnClick(View v)
-    {
-        //DO something
+    public void saveRdv(View view){
+        String title = etTitle.getText().toString();
+        String date  = etDate.getText().toString();
+
+        Rdv rdv = new Rdv(title,date,false);
+
+        myHelper.add(rdv);
+        Intent intent = new Intent(this,RdvList.class).
+                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

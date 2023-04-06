@@ -1,6 +1,8 @@
 package com.example.projet;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,7 +16,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // Table columns
     public static final String _ID   = "_id";
     public static final String TITLE = "title";
-    public static final String MDATE = "date";
+    public static final String DATE = "date";
     public static final String STATE = "state";
     // Database Information
     static final String DB_NAME = "RdvList.DB";
@@ -23,7 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE +
-            " TEXT NOT NULL, " + MDATE + " TEXT, "+ STATE + " NUMBER(1));";
+            " TEXT NOT NULL, " + DATE + " TEXT, "+ STATE + " NUMBER(1));";
 
     // TODO: probably add "CONSTRAINT ck_testbool_ischk CHECK (is_checked IN (1,0))"
 
@@ -47,15 +49,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-//    public void add(...){
-// ...
-//    }
+    public void add(Rdv rdv){
+        ContentValues contentValues= new ContentValues();
+        contentValues.put(TITLE,rdv.getTitle());
+        contentValues.put(DATE,rdv.getDate());
+        contentValues.put(STATE,rdv.getState());
+        database.insert(TABLE_NAME,null,contentValues);
+    }
 //    public int update(...) {
 //…
 //    }
-//    public Cursor getAllMoments(){
-//…
-//    }
+    public Cursor getAllRdv(){
+        String[] projection = {_ID,TITLE,DATE,STATE};
+        Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
+        return cursor;
+    }
+
 //    public void delete(...){
 //...
 //    }
