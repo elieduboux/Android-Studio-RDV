@@ -20,15 +20,15 @@
         android:layout_width="213dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:autofillHints="title"
-        android:hint="@+id/title"
+        android:autofillHints="name"
+        android:hint="@string/new_rdv_title_et"
         android:inputType="text"
         android:padding="25dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="title" />
+        />
 
     <CheckBox
         android:id="@+id/rdv_details_over"
@@ -65,18 +65,6 @@
         app:layout_constraintStart_toEndOf="@+id/rdv_details_date_icon"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_date_icon"
         app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/rdv_details_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:text="@+id/day"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDate"
-        app:layout_constraintStart_toEndOf="@+id/editTextDate"
-        app:layout_constraintTop_toTopOf="@+id/editTextDate"
-        tools:text="day yyyy/mm/dd" />
 
     <Button
         android:id="@+id/rdv_details_button"

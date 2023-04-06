@@ -26,6 +26,10 @@ public class RdvDetail extends AppCompatActivity {
     private TextView  txtDate;
     private Rdv rdv;
 
+    private int idValue;
+    private String titleValue;
+    private String dateValue;
+
     private boolean fromAdd;
 
     @Override
@@ -37,7 +41,6 @@ public class RdvDetail extends AppCompatActivity {
         edTitle  = findViewById(R.id.rdv_details_ed_title);
         cbOver   = findViewById(R.id.rdv_details_over);
         edDate   = findViewById(R.id.editTextDate);
-        txtDate  = findViewById(R.id.rdv_details_date);
         imDate   = findViewById(R.id.rdv_details_date_icon);
         imDate.setImageResource(R.drawable.day_calendar);
 
@@ -51,35 +54,48 @@ public class RdvDetail extends AppCompatActivity {
             Bundle rdvReceived = intent.getExtras();
             rdv = rdvReceived.getParcelable("rdv");
 
-            String id     = String.valueOf(rdv.getId());
+            idValue = rdv.getId();
+            titleValue = rdv.getTitle();
+            dateValue = rdv.getDate();
+
             String title  = rdv.getTitle();
             String date   = rdv.getDate();
             Boolean state = rdv.getState();
 
             edTitle.setHint(title);
             cbOver.setChecked(state);
-            txtDate.setText(date);
+            edDate.setText(date);
         };
     }
 
     public void onValidate(View v)
     {
-        Intent intent= new Intent(this, RdvList.class);
-        Rdv rdvTmp = new Rdv();
-        try {
-
-            rdvTmp.setTitle(edTitle.getText().toString());
-            rdvTmp.setDate(edDate.getText().toString());
-            rdvTmp.setState(cbOver.isChecked());
-            intent.putExtra("rdv", rdvTmp);
-
-        }catch(Exception e) {
-            Toast.makeText(RdvDetail.this,"Error, something probably null," +
-                    "Passing the previous elements !",Toast.LENGTH_LONG).show();
-            intent.putExtra("rdv", rdv);
+        String  title = edTitle.getText().toString();
+        String  date  = edDate.getText().toString();
+        Boolean state = cbOver.isChecked();
+        if (title.equals(""))
+        {
+            title = titleValue;
+        }
+        if (date.equals(""))
+        {
+            date = dateValue;
         }
 
-        this.startActivity(intent);
+        if(fromAdd) {
+            Rdv rdv = new Rdv(title,date,state);
+            myHelper.add(rdv);
+
+            Intent main = new Intent(this,RdvList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(main);
+        }
+        else {
+            Rdv rdv = new Rdv(idValue,title,date,state);
+            myHelper.update(rdv); //Can return the "count" of the update but not useful here.
+
+            Intent main = new Intent(this,RdvList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(main);
+        }
     }
 
     @Override

@@ -56,17 +56,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(STATE,rdv.getState());
         database.insert(TABLE_NAME,null,contentValues);
     }
-//    public int update(...) {
-//…
-//    }
+
+    public int update(Rdv rdv) {
+        int _id= rdv.getId();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TITLE, rdv.getTitle());
+        contentValues.put(DATE,rdv.getDate());
+        contentValues.put(STATE,rdv.getState());
+        int count = database.update(TABLE_NAME, contentValues, this._ID + " = " + _id, null);
+        return count;
+    }
+
     public Cursor getAllRdv(){
         String[] projection = {_ID,TITLE,DATE,STATE};
         Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
         return cursor;
     }
 
-//    public void delete(...){
-//...
-//    }
+    public void delete(int _id)
+    {
+        database.delete(TABLE_NAME, _ID + "=" + _id, null);
+    }
 
 }

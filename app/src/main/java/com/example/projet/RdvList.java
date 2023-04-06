@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +34,7 @@ public class RdvList extends AppCompatActivity {
         lvRdvs.setEmptyView(findViewById(R.id.tvEmpty));
 
         chargeData();
+        registerForContextMenu(lvRdvs);
 
         lvRdvs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -49,6 +51,7 @@ public class RdvList extends AppCompatActivity {
 
                 intent.putExtra("fromAdd",false);
                 startActivity(intent);
+
             }
         });
      }
@@ -77,6 +80,26 @@ public class RdvList extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+
+        if (item.getItemId()==R.id.delete){
+            myHelper.delete((int)info.id);
+            chargeData();
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
 
     public void chargeData(){
         final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,

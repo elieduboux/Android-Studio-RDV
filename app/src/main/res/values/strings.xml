@@ -32,6 +32,7 @@
     <string name="menu_new_rdv">New RDV</string>
     <string name="menu_rdv_list">RDV list</string>
     <string name="menu_back_arrow">Back arrow</string>
+    <string name="menu_delete">Delete</string>
 
     <string name="tv_empty">No items founds</string>
 
