@@ -104,7 +104,7 @@ public class RdvList extends AppCompatActivity {
     public void chargeData(){
         final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,
                 DataBaseHelper.DATE, DataBaseHelper.STATE};
-        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date};
+        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date,R.id.rdv_list_item_over};
 
         Cursor c = myHelper.getAllRdv();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.rdv_list_item,c,from,to,0);

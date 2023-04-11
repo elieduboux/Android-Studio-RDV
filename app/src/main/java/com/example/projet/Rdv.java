@@ -15,9 +15,8 @@ public class Rdv implements Parcelable {
 //    public Time time;       // The of the rdv
 //    public String person; // The contact or a person
 //    public String address // The localisation of the rdv
-//   public String phone   // The phone number of the person to contact
+//    public String phone   // The phone number of the person to contact
     public Boolean state;   // rdv done or not done yet
-
     public Rdv() {
     }
 

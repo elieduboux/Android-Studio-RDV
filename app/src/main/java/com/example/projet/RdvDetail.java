@@ -1,5 +1,6 @@
 package com.example.projet;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,21 +17,23 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
 public class RdvDetail extends AppCompatActivity {
 
     private DataBaseHelper myHelper;
     private TextView  txtTitle;
-    private EditText  edTitle;
+    private EditText  etTitle;
     private CheckBox  cbOver;
     private ImageView imDate;
-    private EditText edDate;
-    private TextView  txtDate;
+    private int year,month,day;
+    private EditText etDate;
     private Rdv rdv;
-
     private int idValue;
     private String titleValue;
     private String dateValue;
-
     private boolean fromAdd;
 
     @Override
@@ -38,9 +42,9 @@ public class RdvDetail extends AppCompatActivity {
         setContentView(R.layout.rdv_details);
 
         txtTitle = findViewById(R.id.rdv_details_tv_title);
-        edTitle  = findViewById(R.id.rdv_details_ed_title);
+        etTitle  = findViewById(R.id.rdv_details_ed_title);
         cbOver   = findViewById(R.id.rdv_details_over);
-        edDate   = findViewById(R.id.editTextDate);
+        etDate   = findViewById(R.id.editTextDate);
         imDate   = findViewById(R.id.rdv_details_date_icon);
         imDate.setImageResource(R.drawable.day_calendar);
 
@@ -62,16 +66,16 @@ public class RdvDetail extends AppCompatActivity {
             String date   = rdv.getDate();
             Boolean state = rdv.getState();
 
-            edTitle.setHint(title);
+            etTitle.setHint(title);
             cbOver.setChecked(state);
-            edDate.setText(date);
+            etDate.setText(date);
         };
     }
 
     public void onValidate(View v)
     {
-        String  title = edTitle.getText().toString();
-        String  date  = edDate.getText().toString();
+        String  title = etTitle.getText().toString();
+        String  date  = etDate.getText().toString();
         Boolean state = cbOver.isChecked();
         if (title.equals(""))
         {
@@ -81,6 +85,15 @@ public class RdvDetail extends AppCompatActivity {
         {
             date = dateValue;
         }
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+//        LocalDate rdvDate = LocalDate.parse(date);
+//        LocalDate localDate = LocalDate.now();
+//        if (rdvDate.compareTo(localDate) >= 0){
+//            state = false;
+//        }
+//        else{
+//            state = true;
+//        }
 
         if(fromAdd) {
             Rdv rdv = new Rdv(title,date,state);
@@ -98,6 +111,33 @@ public class RdvDetail extends AppCompatActivity {
         }
     }
 
+    DatePickerDialog.OnDateSetListener onDate = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay)
+        {
+            year = selectedYear;
+            month = selectedMonth;
+            day = selectedDay;
+            etDate.setText(new StringBuilder().append(month +1).
+                    append("-").append(day).append("-").append(year).append(" "));
+        }
+    };
+
+    public void pickDateDetails(View view){
+        DatePickerFragment date= new DatePickerFragment();
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+        Bundle args = new Bundle();
+        args.putInt("year",year);
+        args.putInt("month",month);
+        args.putInt("day",day);
+        date.setArguments(args);
+        date.setCallBack(onDate);
+        date.show(getSupportFragmentManager(),"Date Picker");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
@@ -109,8 +149,6 @@ public class RdvDetail extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.menu_back: {
                 finish();
-//                Intent intent = new Intent(this,NewRdv.class);
-//                startActivity(intent);
                 return true;
             }
             case R.id.menu_settings: {

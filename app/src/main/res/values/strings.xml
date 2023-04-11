@@ -16,7 +16,7 @@
     <string name="rdv_list_tv_id">id</string>
 
     <string name="rdv_details_button">validate</string>
-    <string name="rdv_details_hint_date">Ex : yyyy/mm/dd</string>
+    <string name="rdv_details_hint_date">Ex : mm-dd-yyyy</string>
 
     <string name="text_view">Text View</string>
 
@@ -25,7 +25,7 @@
 
     <string name="new_rdv_title_tv">Title</string>
     <string name="new_rdv_title_et">Ex : My new rdv</string>
-    <string name="new_rdv_date_et">Ex : 05/08/2023</string>
+    <string name="new_rdv_date_et">Ex : mm-dd-yyyy</string>
     <string name="new_rdv_button_validate">Validate</string>
 
     <string name="menu_settings">Settings</string>
