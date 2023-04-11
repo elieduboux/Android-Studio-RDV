@@ -12,10 +12,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class RdvDetail extends AppCompatActivity {
@@ -82,6 +85,15 @@ public class RdvDetail extends AppCompatActivity {
         {
             date = dateValue;
         }
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+//        LocalDate rdvDate = LocalDate.parse(date);
+//        LocalDate localDate = LocalDate.now();
+//        if (rdvDate.compareTo(localDate) >= 0){
+//            state = false;
+//        }
+//        else{
+//            state = true;
+//        }
 
         if(fromAdd) {
             Rdv rdv = new Rdv(title,date,state);
