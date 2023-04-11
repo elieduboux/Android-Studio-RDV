@@ -39,7 +39,6 @@
         app:layout_constraintStart_toEndOf="@+id/rdv_details_ed_title"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title" />
 
-
     <ImageView
         android:id="@+id/rdv_details_date_icon"
         android:layout_width="43dp"
@@ -48,6 +47,7 @@
         android:layout_marginEnd="40dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
+        android:onClick="pickDateDetails"
         app:layout_constraintEnd_toEndOf="@+id/rdv_details_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/rdv_details_tv_title"
         tools:srcCompat="@drawable/day_calendar" />

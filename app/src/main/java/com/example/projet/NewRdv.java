@@ -1,21 +1,27 @@
 package com.example.projet;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 public class NewRdv extends AppCompatActivity {
 
     private DataBaseHelper myHelper;
     private EditText etTitle;
-
+    private ImageView imDate;
+    private int year,month,day;
     private EditText etDate;
 
 
@@ -25,9 +31,38 @@ public class NewRdv extends AppCompatActivity {
 
         etTitle  = findViewById(R.id.new_rdv_title_et);
         etDate   = findViewById(R.id.new_rdv_date_ed);
+        imDate   = findViewById(R.id.new_rdv_date_iv);
+        imDate.setImageResource(R.drawable.day_calendar);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();
+    }
+
+    DatePickerDialog.OnDateSetListener onDate = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay)
+        {
+            year = selectedYear;
+            month = selectedMonth;
+            day = selectedDay;
+            etDate.setText(new StringBuilder().append(month +1).
+                    append("-").append(day).append("-").append(year).append(" "));
+        }
+    };
+
+    public void pickDateNewRdv(View view){
+        DatePickerFragment date= new DatePickerFragment();
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
+        Bundle args = new Bundle();
+        args.putInt("year",year);
+        args.putInt("month",month);
+        args.putInt("day",day);
+        date.setArguments(args);
+        date.setCallBack(onDate);
+        date.show(getSupportFragmentManager(),"Date Picker");
     }
 
     @Override
@@ -41,8 +76,6 @@ public class NewRdv extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.menu_back: {
                 finish();
-//                Intent intent = new Intent(this,NewRdv.class);
-//                startActivity(intent);
                 return true;
             }
             case R.id.menu_settings: {
