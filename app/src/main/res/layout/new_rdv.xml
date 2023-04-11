@@ -61,18 +61,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/new_rdv_btnPickDate"
-        android:layout_width="102dp"
-        android:layout_height="40dp"
-        android:text="Pick a Date"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/new_rdv_button_validate"
-        app:layout_constraintEnd_toEndOf="@+id/new_rdv_date_ed"
-        app:layout_constraintHorizontal_bias="0.706"
-        app:layout_constraintStart_toEndOf="@+id/new_rdv_date_tv"
-        app:layout_constraintTop_toBottomOf="@+id/new_rdv_date_ed"
-        app:layout_constraintVertical_bias="0.153" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

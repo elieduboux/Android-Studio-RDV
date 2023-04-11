@@ -23,8 +23,7 @@ public class NewRdv extends AppCompatActivity {
     private EditText etTitle;
 
     private EditText etDate;
-    int year,month,day;
-    Button btnPickDate;
+
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,21 +32,12 @@ public class NewRdv extends AppCompatActivity {
 
         etTitle  = findViewById(R.id.new_rdv_title_et);
         etDate   = findViewById(R.id.new_rdv_date_ed);
-        btnPickDate=(Button)findViewById(R.id.new_rdv_btnPickDate);
+
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();
     }
-    DatePickerDialog.OnDateSetListener onDate = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay)
-        {
-            year = selectedYear;
-            month = selectedMonth;
-            day = selectedDay;
-            etDate.setText(new StringBuilder().append(month +1). append("-").append(day).append("-").append(year).append(" "));
-        }
-    };
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,17 +76,4 @@ public class NewRdv extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void pickDate(View view){
-        showDatePicker();
-    }
-
-    private void showDatePicker() {
-        DatePickerFragment date= new DatePickerFragment();
-        final Calendar c = Calendar.getInstance(); year = c.get(Calendar.YEAR);
-        month = c.get(Calendar.MONTH);
-        day = c.get(Calendar.DAY_OF_MONTH);
-        Bundle args = new Bundle(); args.putInt("year",year); args.putInt("month",month); args.putInt("day",day);
-        date.setArguments(args);
-        date.setCallBack(onDate); date.show(getSupportFragmentManager(),"Date Picker");
-    }
 }
