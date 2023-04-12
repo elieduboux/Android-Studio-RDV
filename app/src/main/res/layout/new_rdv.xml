@@ -36,41 +36,26 @@
         app:layout_constraintStart_toStartOf="@+id/new_rdv_title_tv"
         app:layout_constraintTop_toBottomOf="@+id/new_rdv_title_tv" />
 
-    <ImageView
-        android:id="@+id/new_rdv_date_iv"
-        android:layout_width="56dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="24dp"
-        android:contentDescription="@string/profile_image_content_text"
-        android:onClick="pickDateNewRdv"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/new_rdv_date_tv"
-        app:layout_constraintStart_toEndOf="@+id/new_rdv_date_tv"
-        app:layout_constraintTop_toTopOf="@+id/new_rdv_date_tv"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@drawable/day_calendar" />
-
     <EditText
         android:id="@+id/new_rdv_date_ed"
-        android:layout_width="221dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="@string/new_rdv_date_et"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/new_rdv_date_tv"
-        app:layout_constraintStart_toEndOf="@+id/new_rdv_date_iv"
-        app:layout_constraintTop_toTopOf="@+id/new_rdv_date_tv"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/new_rdv_title_tv"
+        app:layout_constraintTop_toTopOf="@+id/new_rdv_title_tv"
         tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/new_rdv_button_validate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="400dp"
         android:onClick="saveRdv"
-        android:text="@string/new_rdv_button_validate"
+        android:text="Validate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
