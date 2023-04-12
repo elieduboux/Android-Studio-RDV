@@ -45,6 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     public void open() throws SQLException {
         database = this.getWritableDatabase();
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
     public void close() {
         database.close();
@@ -71,7 +72,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getAllRdv(){
-        String[] projection = {_ID,TITLE,DATE,STATE};
+        String[] projection = {_ID,TITLE,DATE,TIME,STATE};
         Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
         return cursor;
     }
