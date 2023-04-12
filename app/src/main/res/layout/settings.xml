@@ -24,6 +24,7 @@
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
         android:src="@drawable/play"
+        android:onClick="playAndPauseMusic"
         app:layout_constraintBottom_toBottomOf="@+id/settings_music"
         app:layout_constraintStart_toEndOf="@+id/settings_music"
         app:layout_constraintTop_toTopOf="@+id/settings_music"
