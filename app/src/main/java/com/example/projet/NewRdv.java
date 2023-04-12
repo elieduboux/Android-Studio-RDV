@@ -126,9 +126,9 @@ public class NewRdv extends AppCompatActivity {
     }
 
     public void saveRdv(View view){
-        String title = etTitle.getText().toString();
-        String date  = etDate.getText().toString();
-        String time = etTime.getText().toString();
+        String title  = etTitle.getText().toString();
+        String date   = etDate.getText().toString();
+        String time   = etTime.getText().toString();
         String person = etPerson.getText().toString();
 
         Rdv rdv = new Rdv(title,date,time,person,false);

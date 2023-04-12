@@ -21,11 +21,11 @@ public class Rdv implements Parcelable {
     }
 
     public Rdv(int id, String title, String date, String time,String person, Boolean state) {
-        this.id = id;
+        this.id    = id;
         this.title = title;
-        this.date = date;
-        this.time =time;
-        this.time = person;
+        this.date  = date;
+        this.time  = time;
+        this.person  = person;
         this.state = state;
     }
 
@@ -51,9 +51,9 @@ public class Rdv implements Parcelable {
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(date);
-        dest.writeBoolean(state);
         dest.writeString(time);
         dest.writeString(person);
+        dest.writeBoolean(state);
     }
 
     public static final Parcelable.Creator<Rdv> CREATOR = new Parcelable.Creator<Rdv>(){

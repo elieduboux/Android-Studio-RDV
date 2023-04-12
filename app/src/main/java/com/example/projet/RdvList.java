@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class RdvList extends AppCompatActivity {
                 String dateItem= ((TextView)view.findViewById(R.id.rdv_list_item_date)).getText().toString();
                 String timeItem = ((TextView) view.findViewById(R.id.rdv_list_item_time)).getText().toString();
                 String personItem = ((TextView) view.findViewById(R.id.rdv_list_item_person)).getText().toString();
-                CheckBox cbState = view.findViewById(R.id.rdv_list_item_over);
+                CheckBox cbState = view.findViewById(R.id.rdv_list_item_state);
                 Boolean stateItem = cbState.isChecked();
 
                 Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,timeItem,personItem,stateItem);
@@ -106,8 +107,10 @@ public class RdvList extends AppCompatActivity {
 
     public void chargeData(){
         final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,
-                DataBaseHelper.DATE,DataBaseHelper.TIME, DataBaseHelper.STATE};
-        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date,R.id.rdv_list_item_time,R.id.rdv_list_item_over};
+                DataBaseHelper.DATE,DataBaseHelper.TIME, DataBaseHelper.PERSON, DataBaseHelper.STATE};
+        final int[]to= new int[]{
+                R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title, R.id.rdv_list_item_date,
+                R.id.rdv_list_item_time, R.id.rdv_list_item_person,R.id.rdv_list_item_state};
 
         Cursor c = myHelper.getAllRdv();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.rdv_list_item,c,from,to,0);

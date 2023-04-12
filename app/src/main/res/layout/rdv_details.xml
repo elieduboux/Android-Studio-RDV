@@ -36,7 +36,7 @@
         android:id="@+id/rdv_details_over"
         android:layout_width="98dp"
         android:layout_height="70dp"
-        android:text="@string/rdv_list_over"
+        android:text="@string/rdv_list_state"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_details_ed_title"
         app:layout_constraintStart_toEndOf="@+id/rdv_details_ed_title"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title" />

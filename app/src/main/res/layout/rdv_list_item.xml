@@ -19,12 +19,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="title" />
+
     <CheckBox
-        android:id="@+id/rdv_list_item_over"
+        android:id="@+id/rdv_list_item_state"
         android:layout_width="98dp"
         android:layout_height="70dp"
-        android:text="@string/rdv_list_over"
         android:focusable="false"
+        android:text="@string/rdv_list_state"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_title"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title" />
 
@@ -32,9 +33,10 @@
         android:id="@+id/rdv_list_item_date_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
+        android:src="@drawable/day_calendar"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_title"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title"
         tools:srcCompat="@drawable/day_calendar" />
@@ -43,49 +45,50 @@
         android:id="@+id/rdv_list_item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
         android:padding="25dp"
         android:text="@+id/day"
         android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_date_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_date_icon"
-        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title"
+        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_date_icon"
+        app:layout_constraintVertical_bias="0.608"
         tools:text="day yyyy/mm/dd" />
 
     <TextView
         android:id="@+id/rdv_list_item_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/rdv_list_tv_id"
-        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_date"
-        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_over"
-        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_date"
-        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_title" />
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_state"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_state" />
 
     <ImageView
         android:id="@+id/rdv_list_item_time_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/rdv_list_item_time"
-        app:layout_constraintHorizontal_bias="0.068"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/clock_calendar"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_date_icon"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_date_icon"
-        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_date_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_date_icon"
         tools:srcCompat="@drawable/clock_calendar" />
 
     <TextView
         android:id="@+id/rdv_list_item_time"
-        android:layout_width="74dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:padding="25dp"
-        android:text="@+id/time"
-
+        android:text="@string/rdv_list_et_time"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_time_icon"
-        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_date"
-        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_date"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_time_icon"
+        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintVertical_bias="1.0"
         tools:text="hh:mm" />
 
@@ -93,22 +96,25 @@
         android:id="@+id/rdv_list_item_person_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
+        android:src="@drawable/person"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time_icon"
         tools:srcCompat="@drawable/person" />
 
     <TextView
         android:id="@+id/rdv_list_item_person"
-        android:layout_width="123dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:padding="25dp"
+        android:text="@string/rdv_list_et_person"
         android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_person_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_person_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time"
         tools:text="contact" />

@@ -28,6 +28,9 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         TextView  txtDate;
         ImageView imTime;
         TextView txtTime;
+        ImageView imPerson;
+        TextView txtPerson;
+
 
     }
 
@@ -40,19 +43,23 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.rdv_list_item,null, false);
             TextView txtTitle = convertView.findViewById(R.id.rdv_list_item_title);
-            CheckBox cbOver   = convertView.findViewById(R.id.rdv_list_item_over);
+            CheckBox cbOver   = convertView.findViewById(R.id.rdv_list_item_state);
             ImageView imDate  = convertView.findViewById(R.id.rdv_list_item_date_icon);
             TextView txtDate  = convertView.findViewById(R.id.rdv_list_item_date);
             ImageView imTime  = convertView.findViewById(R.id.rdv_list_item_time_icon);
             TextView txtTime  = convertView.findViewById(R.id.rdv_list_item_time);
+            ImageView imPerson  = convertView.findViewById(R.id.rdv_list_item_person_icon);
+            TextView txtPerson = convertView.findViewById(R.id.rdv_list_item_person);
 
             holder = new ViewHolder();
-            holder.txtTitle = txtTitle;
-            holder.cbOver = cbOver;
-            holder.imDate = imDate;
-            holder.txtDate = txtDate;
-            holder.imTime = imTime;
-            holder.txtTime = txtTime;
+            holder.txtTitle  = txtTitle;
+            holder.cbOver    = cbOver;
+            holder.imDate    = imDate;
+            holder.txtDate   = txtDate;
+            holder.imTime    = imTime;
+            holder.txtTime   = txtTime;
+            holder.imPerson  = imPerson;
+            holder.txtPerson = txtPerson;
 
             convertView.setTag(holder);
         }
@@ -68,6 +75,8 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtDate.setText(rdv.date);
             holder.imTime.setImageResource(R.drawable.clock_calendar);
             holder.txtTime.setText(rdv.time);
+            holder.imPerson.setImageResource(R.drawable.person);
+            holder.txtPerson.setText(rdv.person);
         }
         return convertView;
     }
