@@ -1,0 +1,48 @@
+<resources>
+    <!--   *** NAMES FOR THE MANIFEST ***-->
+    <string name="app_name">Projet</string>
+
+    <string name="rdv_details">RDV détails</string>
+    <string name="rdv_list">Mes RDV</string>
+    <string name="new_rdv">Nouveau RDV</string>
+    <string name="settings">Réglages</string>
+
+
+    <!--   *** VALUES IN RES FOLDER***-->
+    <string name="profile_image_content_text">Profile</string>
+
+    <string name="rdv_list_title">titre</string>
+    <string name="rdv_list_state">fini</string>
+    <string name="rdv_list_tv_id">id</string>
+    <string name="rdv_list_id_text">RDV id :</string>
+    <string name="rdv_list_et_time">temps</string>
+    <string name="rdv_list_et_person">personne</string>
+
+
+    <string name="rdv_details_button">valider</string>
+    <string name="rdv_details_hint_date">Ex : mm-jj-aaaa</string>
+    <string name="rdv_details_hint_time">Ex : hh:mm</string>
+    <string name="rdv_details_hint_person">Nom et Prénom</string>
+
+    <string name="text_view">Text View</string>
+
+    <string name="settings_volume">Musique</string>
+    <string name="setting_dark_mode">Mode Sombre</string>
+
+    <string name="new_rdv_title_tv">Titre</string>
+    <string name="new_rdv_title_et">Ex : Mon Nouveau Rendez-vous</string>
+    <string name="new_rdv_date_et">Ex : mm-jj-aaaa</string>
+    <string name="new_rdv_time_et">Ex : hh:mm</string>
+    <string name="new_rdv_person_ep">Nom et Prénom</string>
+    <string name="new_rdv_button_validate">Valider</string>
+
+    <string name="menu_settings">Réglages</string>
+    <string name="menu_new_rdv">Nouveau RDV</string>
+    <string name="menu_rdv_list">liste de RDV</string>
+    <string name="menu_back_arrow">Retour</string>
+    <string name="menu_delete">Supprimer</string>
+
+    <string name="tv_empty">Aucun RDV</string>
+
+
+</resources>
