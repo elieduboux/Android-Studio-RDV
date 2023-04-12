@@ -80,17 +80,33 @@
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_state" />
 
     <ImageView
+        android:id="@+id/rdv_list_share_iv"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="24dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        android:src="@drawable/share"
+        android:onClick="shareRdv"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_id_text"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_tv_id"
+        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_id_text"
+        app:layout_constraintVertical_bias="0.565"
+        tools:srcCompat="@drawable/share" />
+
+    <ImageView
         android:id="@+id/rdv_list_item_time_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
         android:layout_marginTop="28dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:focusable="false"
         android:src="@drawable/clock_calendar"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_date_icon"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_date_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_date_icon"
-        tools:srcCompat="@drawable/clock_calendar"
-        android:contentDescription="@string/profile_image_content_text" />
+        tools:srcCompat="@drawable/clock_calendar" />
 
     <TextView
         android:id="@+id/rdv_list_item_time"
