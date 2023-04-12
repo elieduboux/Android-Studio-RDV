@@ -33,7 +33,7 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         TextView txtTime;
         ImageView imPerson;
         TextView txtPerson;
-        ImageView imShare;
+//        ImageView imShare;
 
     }
 
@@ -51,7 +51,7 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             TextView txtTime   = convertView.findViewById(R.id.rdv_list_item_time);
             ImageView imPerson = convertView.findViewById(R.id.rdv_list_item_person_icon);
             TextView txtPerson = convertView.findViewById(R.id.rdv_list_item_person);
-            ImageView imShare  = convertView.findViewById(R.id.rdv_list_share_iv);
+//            ImageView imShare  = convertView.findViewById(R.id.rdv_list_share_iv);
 
             holder = new ViewHolder();
             holder.txtTitle  = txtTitle;
@@ -62,7 +62,7 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtTime   = txtTime;
             holder.imPerson  = imPerson;
             holder.txtPerson = txtPerson;
-            holder.imShare   = imShare;
+//            holder.imShare   = imShare;
 
             convertView.setTag(holder);
         }
@@ -80,23 +80,23 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.imPerson.setImageResource(R.drawable.person);
             holder.txtPerson.setText(rdv.person);
 
-            holder.imShare.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent sendIntent = new Intent();
-
-                    String textToShare = "Title : " + rdv.title + "\n" +
-                            "Date : " + rdv.date + "\n" +
-                            "Time : " + rdv.time + "\n" +
-                            "Contact : " + rdv.person + "\n";
-                    sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
-                    sendIntent.setType("text/plain");
-//                    myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(Intent.createChooser(sendIntent, "Share App"));
-                }
-
-            });
+//            holder.imShare.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent sendIntent = new Intent();
+//
+//                    String textToShare = "Title : " + rdv.title + "\n" +
+//                            "Date : " + rdv.date + "\n" +
+//                            "Time : " + rdv.time + "\n" +
+//                            "Contact : " + rdv.person + "\n";
+//                    sendIntent.setAction(Intent.ACTION_SEND);
+//                    sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
+//                    sendIntent.setType("text/plain");
+////                    myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                    startActivity(Intent.createChooser(sendIntent, "Share App"));
+//                }
+//
+//            });
         }
 
         return convertView;
