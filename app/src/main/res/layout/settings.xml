@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/settings_volume"
+        android:id="@+id/settings_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -16,14 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
-        android:id="@+id/settings_volume_seek_bar"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_volume"
-        app:layout_constraintStart_toEndOf="@+id/settings_volume"
-        app:layout_constraintTop_toTopOf="@+id/settings_volume" />
+    <ImageView
+        android:id="@+id/settings_music_bt"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="84dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        android:src="@drawable/play"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_music"
+        app:layout_constraintStart_toEndOf="@+id/settings_music"
+        app:layout_constraintTop_toTopOf="@+id/settings_music"
+        app:layout_constraintVertical_bias="0.304"
+        tools:srcCompat="@drawable/play" />
 
     <TextView
         android:id="@+id/settings_dark_mode"
@@ -31,18 +36,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:text="@string/setting_dark_mode"
-        app:layout_constraintStart_toStartOf="@+id/settings_volume"
-        app:layout_constraintTop_toBottomOf="@+id/settings_volume" />
+        app:layout_constraintEnd_toEndOf="@+id/settings_music"
+        app:layout_constraintStart_toStartOf="@+id/settings_music"
+        app:layout_constraintTop_toBottomOf="@+id/settings_music" />
 
     <Switch
         android:id="@+id/settings_dark_mode_switch"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="72dp"
         android:onClick="switchTheme"
         app:layout_constraintBottom_toBottomOf="@+id/settings_dark_mode"
         app:layout_constraintStart_toEndOf="@+id/settings_dark_mode"
         app:layout_constraintTop_toTopOf="@+id/settings_dark_mode"
+        app:layout_constraintVertical_bias="0.516"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

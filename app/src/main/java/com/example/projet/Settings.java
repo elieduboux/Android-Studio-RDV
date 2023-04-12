@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 public class Settings extends AppCompatActivity {
 
     Switch swDarkMode;
+    ImageView btPlayMusic;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
@@ -22,6 +24,13 @@ public class Settings extends AppCompatActivity {
         swDarkMode = findViewById(R.id.settings_dark_mode_switch);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
             swDarkMode.setChecked(true);
+
+        btPlayMusic = findViewById(R.id.settings_music_bt);
+
+    }
+
+    public void playAndPauseMusic(View view){
+
     }
 
     public void switchTheme(View view){
