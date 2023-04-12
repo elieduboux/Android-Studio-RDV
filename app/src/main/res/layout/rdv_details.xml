@@ -10,10 +10,12 @@
         android:id="@+id/rdv_details_tv_title"
         android:layout_width="55dp"
         android:layout_height="34dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/rdv_list_title"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_details_ed_title"
         app:layout_constraintEnd_toStartOf="@+id/rdv_details_ed_title"
-        app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title" />
+        app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title"
+        app:layout_constraintVertical_bias="0.527" />
 
     <EditText
         android:id="@+id/rdv_details_ed_title"
@@ -39,15 +41,16 @@
         app:layout_constraintStart_toEndOf="@+id/rdv_details_ed_title"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title" />
 
+
     <ImageView
         android:id="@+id/rdv_details_date_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="12dp"
         android:contentDescription="@string/profile_image_content_text"
-        android:scaleType="centerInside"
         android:onClick="pickDateDetails"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="@+id/rdv_details_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/rdv_details_tv_title"
         tools:srcCompat="@drawable/day_calendar" />
@@ -56,21 +59,76 @@
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
+        android:layout_marginStart="20dp"
         android:autofillHints=""
-        android:inputType="date"
+        android:ems="10"
         android:hint="@string/rdv_details_hint_date"
+        android:inputType="date"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_details_date_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_details_date_icon"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_date_icon"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/rdv_details_time_icon"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:onClick="showTimePicker"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_details_button"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_details_person_icon"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/rdv_details_date_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_details_date_icon"
+        app:layout_constraintVertical_bias="0.174"
+        tools:srcCompat="@drawable/clock_calendar" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="@string/rdv_details_hint_time"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate"
+        app:layout_constraintTop_toTopOf="@+id/editTextDate" />
+
+    <ImageView
+        android:id="@+id/rdv_details_person_icon"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPerson"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_details_time_icon"
+        tools:srcCompat="@drawable/person" />
+
+    <EditText
+        android:id="@+id/editTextPerson"
+        android:layout_width="206dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="36dp"
+        android:autofillHints="person"
+        android:ems="10"
+        android:hint="@string/rdv_details_hint_person"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/rdv_details_button"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTime"
+        app:layout_constraintStart_toStartOf="@+id/editTextTime"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/rdv_details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="476dp"
         android:onClick="onValidate"
         android:text="@string/rdv_details_button"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,6 +17,8 @@
 
     <string name="rdv_details_button">validate</string>
     <string name="rdv_details_hint_date">Ex : mm-dd-yyyy</string>
+    <string name="rdv_details_hint_time">Ex : hh:mm</string>
+    <string name="rdv_details_hint_person">Name</string>
 
     <string name="text_view">Text View</string>
 
@@ -26,6 +28,8 @@
     <string name="new_rdv_title_tv">Title</string>
     <string name="new_rdv_title_et">Ex : My new rdv</string>
     <string name="new_rdv_date_et">Ex : mm-dd-yyyy</string>
+    <string name="new_rdv_time_et">Ex : hh:mm</string>
+    <string name="new_rdv_person_ep">Name</string>
     <string name="new_rdv_button_validate">Validate</string>
 
     <string name="menu_settings">Settings</string>

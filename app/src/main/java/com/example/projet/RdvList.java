@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class RdvList extends AppCompatActivity {
@@ -42,10 +43,12 @@ public class RdvList extends AppCompatActivity {
                 String idItem= ((TextView)view.findViewById(R.id.rdv_list_item_tv_id)).getText().toString();
                 String titleItem= ((TextView)view.findViewById(R.id.rdv_list_item_title)).getText().toString();
                 String dateItem= ((TextView)view.findViewById(R.id.rdv_list_item_date)).getText().toString();
+                String timeItem = ((TextView) view.findViewById(R.id.rdv_list_item_time)).getText().toString();
+                String personItem = ((TextView) view.findViewById(R.id.rdv_list_item_person)).getText().toString();
                 CheckBox cbState = view.findViewById(R.id.rdv_list_item_over);
                 Boolean stateItem = cbState.isChecked();
 
-                Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,stateItem);
+                Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,timeItem,personItem,stateItem);
                 Intent intent = new Intent(getApplicationContext(), RdvDetail.class);
                 intent.putExtra("rdv",rdv);
 
@@ -103,8 +106,8 @@ public class RdvList extends AppCompatActivity {
 
     public void chargeData(){
         final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,
-                DataBaseHelper.DATE, DataBaseHelper.STATE};
-        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date,R.id.rdv_list_item_over};
+                DataBaseHelper.DATE,DataBaseHelper.TIME, DataBaseHelper.STATE};
+        final int[]to= new int[]{R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title,R.id.rdv_list_item_date,R.id.rdv_list_item_time,R.id.rdv_list_item_over};
 
         Cursor c = myHelper.getAllRdv();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.rdv_list_item,c,from,to,0);

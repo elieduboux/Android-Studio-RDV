@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String _ID   = "_id";
     public static final String TITLE = "title";
     public static final String DATE = "date";
+    public static final String TIME ="time";
     public static final String STATE = "state";
     // Database Information
     static final String DB_NAME = "RdvList.DB";
@@ -25,7 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE +
-            " TEXT NOT NULL, " + DATE + " TEXT, "+ STATE + " NUMBER(1));";
+            " TEXT NOT NULL, " + DATE + " TEXT NOT NULL, " + TIME +" TEXT, "+ STATE + " NUMBER(1));";
 
     // TODO: probably add "CONSTRAINT ck_testbool_ischk CHECK (is_checked IN (1,0))"
 
@@ -53,6 +54,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues= new ContentValues();
         contentValues.put(TITLE,rdv.getTitle());
         contentValues.put(DATE,rdv.getDate());
+        contentValues.put(TIME,rdv.getTime());
         contentValues.put(STATE,rdv.getState());
         database.insert(TABLE_NAME,null,contentValues);
     }
@@ -62,6 +64,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TITLE, rdv.getTitle());
         contentValues.put(DATE,rdv.getDate());
+        contentValues.put(TIME,rdv.getTime());
         contentValues.put(STATE,rdv.getState());
         int count = database.update(TABLE_NAME, contentValues, this._ID + " = " + _id, null);
         return count;

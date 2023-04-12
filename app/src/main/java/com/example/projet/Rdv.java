@@ -12,24 +12,28 @@ public class Rdv implements Parcelable {
     public int id;          // Unique identifier auto-incremented
     public String title;    // Can also be a description
     public String date;       // Date of the rdv
-//    public Time time;       // The of the rdv
-//    public String person; // The contact or a person
+    public String time;       // The of the rdv
+    public String person; // The contact or a person
 //    public String address // The localisation of the rdv
 //    public String phone   // The phone number of the person to contact
     public Boolean state;   // rdv done or not done yet
     public Rdv() {
     }
 
-    public Rdv(int id, String title, String date, Boolean state) {
+    public Rdv(int id, String title, String date, String time,String person, Boolean state) {
         this.id = id;
         this.title = title;
         this.date = date;
+        this.time =time;
+        this.time = person;
         this.state = state;
     }
 
-    public Rdv(String title, String date, Boolean state) {
+    public Rdv(String title, String date, String time, String person,Boolean state) {
         this.title = title;
         this.date = date;
+        this.time = time;
+        this.person = person;
         this.state = state;
     }
 
@@ -37,6 +41,8 @@ public class Rdv implements Parcelable {
         id    = parcel.readInt();
         title = parcel.readString();
         date  = parcel.readString();
+        time = parcel.readString();
+        person = parcel.readString();
         state = parcel.readBoolean();
     }
 
@@ -46,6 +52,8 @@ public class Rdv implements Parcelable {
         dest.writeString(title);
         dest.writeString(date);
         dest.writeBoolean(state);
+        dest.writeString(time);
+        dest.writeString(person);
     }
 
     public static final Parcelable.Creator<Rdv> CREATOR = new Parcelable.Creator<Rdv>(){
@@ -79,6 +87,12 @@ public class Rdv implements Parcelable {
     public Boolean getState() {
         return state;
     }
+    public String getTime() {
+        return time;
+    }
+    public String getPerson() {
+        return person;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -92,6 +106,13 @@ public class Rdv implements Parcelable {
         this.date = date;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
     public void setState(Boolean state) {
         this.state = state;
     }
