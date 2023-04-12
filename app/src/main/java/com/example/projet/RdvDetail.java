@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -65,7 +66,6 @@ public class RdvDetail extends AppCompatActivity {
         etPerson = findViewById(R.id.editTextPerson);
         imPerson = findViewById(R.id.rdv_details_person_icon);
         imPerson.setImageResource(R.drawable.person);
-
         myHelper = new DataBaseHelper(this);
         myHelper.open();
 

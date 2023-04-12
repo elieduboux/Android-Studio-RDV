@@ -1,6 +1,7 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,6 +29,11 @@ public class RdvList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv_list);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.darkTheme); //when dark mode is enabled, we use the dark theme
+        } else {
+            setTheme(R.style.AppTheme);  //default app theme
+        }
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();

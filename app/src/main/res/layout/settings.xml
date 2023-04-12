@@ -21,6 +21,7 @@
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_volume"
         app:layout_constraintStart_toEndOf="@+id/settings_volume"
         app:layout_constraintTop_toTopOf="@+id/settings_volume" />
 
@@ -35,9 +36,11 @@
 
     <Switch
         android:id="@+id/settings_dark_mode_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="40dp"
+        android:onClick="switchTheme"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_dark_mode"
         app:layout_constraintStart_toEndOf="@+id/settings_dark_mode"
         app:layout_constraintTop_toTopOf="@+id/settings_dark_mode"
         tools:ignore="UseSwitchCompatOrMaterialXml" />

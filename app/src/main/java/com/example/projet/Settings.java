@@ -5,15 +5,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class Settings extends AppCompatActivity {
 
+    Switch swDarkMode;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+
+        swDarkMode = findViewById(R.id.settings_dark_mode_switch);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+            swDarkMode.setChecked(true);
+    }
+
+    public void switchTheme(View view){
+        if(swDarkMode.isChecked())
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     @Override
@@ -24,15 +39,10 @@ public class Settings extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.menu_back: {
-                finish();
-//                Intent intent = new Intent(this,NewRdv.class);
-//                startActivity(intent);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_back) {
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }
