@@ -17,6 +17,7 @@ public class Settings extends AppCompatActivity {
 
     Switch swDarkMode;
     ImageView btPlayMusic;
+    boolean isClicked;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
@@ -31,6 +32,8 @@ public class Settings extends AppCompatActivity {
 
     public void playAndPauseMusic(View view){
 
+        Intent serviceIntent= new Intent(getApplicationContext(),MusicService.class);
+        startService(serviceIntent);
     }
 
     public void switchTheme(View view){
