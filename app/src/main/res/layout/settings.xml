@@ -18,13 +18,13 @@
 
     <ImageView
         android:id="@+id/settings_music_bt"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
+        android:layout_width="63dp"
+        android:layout_height="55dp"
         android:layout_marginStart="84dp"
         android:contentDescription="@string/profile_image_content_text"
+        android:onClick="playAndPauseMusic"
         android:scaleType="centerInside"
         android:src="@drawable/play"
-        android:onClick="playAndPauseMusic"
         app:layout_constraintBottom_toBottomOf="@+id/settings_music"
         app:layout_constraintStart_toEndOf="@+id/settings_music"
         app:layout_constraintTop_toTopOf="@+id/settings_music"
