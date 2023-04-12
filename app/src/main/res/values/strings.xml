@@ -14,6 +14,7 @@
     <string name="rdv_list_title">title</string>
     <string name="rdv_list_state">over</string>
     <string name="rdv_list_tv_id">id</string>
+    <string name="rdv_list_id_text">RDV id :</string>
     <string name="rdv_list_et_time">time</string>
     <string name="rdv_list_et_person">person</string>
 

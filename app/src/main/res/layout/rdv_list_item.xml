@@ -13,6 +13,7 @@
         android:layout_marginTop="12dp"
         android:padding="25dp"
         android:text="@+id/title"
+        android:textColor="@color/teal_700"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,6 +27,7 @@
         android:layout_height="70dp"
         android:focusable="false"
         android:text="@string/rdv_list_state"
+        android:textColor="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_title"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title" />
 
@@ -48,6 +50,7 @@
         android:layout_marginStart="8dp"
         android:padding="25dp"
         android:text="@+id/day"
+        android:textColor="@color/teal_700"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_date_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_date_icon"
@@ -59,10 +62,20 @@
         android:id="@+id/rdv_list_item_tv_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="@string/rdv_list_tv_id"
+        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_id_text"
+        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_id_text"
+        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_id_text" />
+
+    <TextView
+        android:id="@+id/rdv_list_item_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/rdv_list_id_text"
+        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_state"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_state" />
 
@@ -76,7 +89,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_date_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_date_icon"
-        tools:srcCompat="@drawable/clock_calendar" />
+        tools:srcCompat="@drawable/clock_calendar"
+        android:contentDescription="@string/profile_image_content_text" />
 
     <TextView
         android:id="@+id/rdv_list_item_time"
@@ -85,6 +99,7 @@
         android:layout_marginStart="8dp"
         android:padding="25dp"
         android:text="@string/rdv_list_et_time"
+        android:textColor="@color/teal_700"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_time_icon"
@@ -113,6 +128,7 @@
         android:layout_marginTop="16dp"
         android:padding="25dp"
         android:text="@string/rdv_list_et_person"
+        android:textColor="@color/teal_700"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_person_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_person_icon"
