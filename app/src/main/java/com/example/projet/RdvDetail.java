@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -46,8 +47,11 @@ public class RdvDetail extends AppCompatActivity {
         cbOver   = findViewById(R.id.rdv_details_over);
         etDate   = findViewById(R.id.editTextDate);
         imDate   = findViewById(R.id.rdv_details_date_icon);
-        imDate.setImageResource(R.drawable.day_calendar);
-
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+            imDate.setImageResource(R.drawable.day_calendar_night);
+        else
+            imDate.setImageResource(R.drawable.day_calendar);
+        
         myHelper = new DataBaseHelper(this);
         myHelper.open();
 
