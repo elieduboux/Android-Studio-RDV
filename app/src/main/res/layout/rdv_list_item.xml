@@ -10,13 +10,13 @@
         android:id="@+id/rdv_list_item_title"
         android:layout_width="213dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:padding="25dp"
         android:text="@+id/title"
         android:textColor="@color/teal_700"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="title" />
@@ -104,18 +104,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintTop_toTopOf="@+id/rdv_list_item_time_icon"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.304"
         tools:text="hh:mm" />
 
     <ImageView
         android:id="@+id/rdv_list_item_person_icon"
         android:layout_width="43dp"
         android:layout_height="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
         android:src="@drawable/person"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_time_icon"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time_icon"
         tools:srcCompat="@drawable/person" />
@@ -125,15 +126,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:padding="25dp"
         android:text="@string/rdv_list_et_person"
         android:textColor="@color/teal_700"
         android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_person_icon"
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_person_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time"
         tools:text="contact" />
 
+    <ImageView
+        android:id="@+id/rdv_list_item_phone_icon"
+        android:layout_width="37dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        android:src="@drawable/call"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_person_icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_person_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_person_icon"
+        tools:srcCompat="@drawable/call" />
+
+    <TextView
+        android:id="@+id/rdv_list_item_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:padding="25dp"
+        android:text="@string/rdv_list_et_person"
+        android:textColor="@color/teal_700"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_person"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_person"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_person"
+        tools:text="Phone" />
+
+    <ImageView
+        android:id="@+id/rdv_list_item_address_icon"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        android:src="@drawable/address"
+        android:onClick="launchMaps"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_phone_icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_phone_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_phone_icon"
+        tools:srcCompat="@drawable/address" />
+
+    <TextView
+        android:id="@+id/rdv_list_item_address"
+        android:layout_width="81dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:padding="25dp"
+        android:text="@string/rdv_list_et_person"
+        android:textColor="@color/teal_700"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_phone"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/rdv_list_item_phone"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_phone"
+        tools:text="Address" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

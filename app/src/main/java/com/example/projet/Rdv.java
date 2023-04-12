@@ -14,26 +14,30 @@ public class Rdv implements Parcelable {
     public String date;       // Date of the rdv
     public String time;       // The of the rdv
     public String person; // The contact or a person
-//    public String address // The localisation of the rdv
-//    public String phone   // The phone number of the person to contact
+    public String address; // The localisation of the rdv
+    public String phone;   // The phone number of the person to contact
     public Boolean state;   // rdv done or not done yet
     public Rdv() {
     }
 
-    public Rdv(int id, String title, String date, String time,String person, Boolean state) {
+    public Rdv(int id, String title, String date, String time,String person, String phone, String address,Boolean state) {
         this.id    = id;
         this.title = title;
         this.date  = date;
         this.time  = time;
         this.person  = person;
+        this.phone = phone;
+        this.address = address;
         this.state = state;
     }
 
-    public Rdv(String title, String date, String time, String person,Boolean state) {
+    public Rdv(String title, String date, String time, String person, String phone, String address,Boolean state) {
         this.title = title;
         this.date = date;
         this.time = time;
         this.person = person;
+        this.phone = phone;
+        this.address = address;
         this.state = state;
     }
 
@@ -43,6 +47,8 @@ public class Rdv implements Parcelable {
         date  = parcel.readString();
         time = parcel.readString();
         person = parcel.readString();
+        phone = parcel.readString();
+        address = parcel.readString();
         state = parcel.readBoolean();
     }
 
@@ -53,6 +59,8 @@ public class Rdv implements Parcelable {
         dest.writeString(date);
         dest.writeString(time);
         dest.writeString(person);
+        dest.writeString(phone);
+        dest.writeString(address);
         dest.writeBoolean(state);
     }
 
@@ -93,6 +101,12 @@ public class Rdv implements Parcelable {
     public String getPerson() {
         return person;
     }
+    public String getPhone() {
+        return phone;
+    }
+    public String getAddress() {
+        return address;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -112,6 +126,12 @@ public class Rdv implements Parcelable {
 
     public void setPerson(String person) {
         this.person = person;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
     public void setState(Boolean state) {
         this.state = state;

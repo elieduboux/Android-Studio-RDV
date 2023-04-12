@@ -31,6 +31,13 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         ImageView imPerson;
         TextView txtPerson;
 
+        ImageView imPhone;
+        TextView txtPhone;
+
+        ImageView imAddress;
+        TextView txtAddress;
+
+
 
     }
 
@@ -50,6 +57,10 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             TextView txtTime  = convertView.findViewById(R.id.rdv_list_item_time);
             ImageView imPerson  = convertView.findViewById(R.id.rdv_list_item_person_icon);
             TextView txtPerson = convertView.findViewById(R.id.rdv_list_item_person);
+            ImageView imPhone  = convertView.findViewById(R.id.rdv_list_item_phone_icon);
+            TextView txtPhone = convertView.findViewById(R.id.rdv_list_item_phone);
+            ImageView imAddress  = convertView.findViewById(R.id.rdv_list_item_address_icon);
+            TextView txtAddress = convertView.findViewById(R.id.rdv_list_item_address);
 
             holder = new ViewHolder();
             holder.txtTitle  = txtTitle;
@@ -60,6 +71,10 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtTime   = txtTime;
             holder.imPerson  = imPerson;
             holder.txtPerson = txtPerson;
+            holder.imPhone  = imPhone;
+            holder.txtPhone = txtPhone;
+            holder.imAddress  = imAddress;
+            holder.txtAddress = txtAddress;
 
             convertView.setTag(holder);
         }
@@ -77,6 +92,12 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtTime.setText(rdv.time);
             holder.imPerson.setImageResource(R.drawable.person);
             holder.txtPerson.setText(rdv.person);
+            holder.imPhone.setImageResource(R.drawable.call);
+            holder.txtPhone.setText(rdv.phone);
+            holder.imAddress.setImageResource(R.drawable.address);
+            holder.txtAddress.setText(rdv.address);
+
+
         }
         return convertView;
     }

@@ -66,13 +66,13 @@
         android:id="@+id/new_rdv_time_iv"
         android:layout_width="56dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/profile_image_content_text"
         android:onClick="showTimePicker"
-        app:layout_constraintBottom_toBottomOf="@+id/new_rdv_button_validate"
-        app:layout_constraintEnd_toStartOf="@+id/new_rdv_button_validate"
+        app:layout_constraintEnd_toEndOf="@+id/new_rdv_title_tv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_rdv_title_tv"
         app:layout_constraintTop_toBottomOf="@+id/new_rdv_date_iv"
-        app:layout_constraintVertical_bias="0.107"
         tools:srcCompat="@drawable/clock_calendar" />
 
     <EditText
@@ -83,20 +83,19 @@
         android:autofillHints="time"
         android:hint="@string/new_rdv_time_et"
         android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/new_rdv_person_ep"
         app:layout_constraintEnd_toEndOf="@+id/new_rdv_date_ed"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/new_rdv_time_iv"
-        app:layout_constraintTop_toBottomOf="@+id/new_rdv_date_ed"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_date_ed" />
 
     <ImageView
         android:id="@+id/new_rdv_person_iv"
         android:layout_width="56dp"
         android:layout_height="54dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/new_rdv_time_iv"
         app:layout_constraintStart_toStartOf="@+id/new_rdv_time_iv"
         app:layout_constraintTop_toBottomOf="@+id/new_rdv_time_iv"
         tools:srcCompat="@drawable/person" />
@@ -105,27 +104,81 @@
         android:id="@+id/new_rdv_person_ep"
         android:layout_width="221dp"
         android:layout_height="52dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:autofillHints="contact"
         android:ems="10"
         android:hint="@string/new_rdv_person_ep"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/new_rdv_button_validate"
         app:layout_constraintStart_toEndOf="@+id/new_rdv_person_iv"
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_time_et"
+        tools:ignore="TextFields" />
+
+    <ImageView
+        android:id="@+id/new_rdv_phone_iv"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/new_rdv_person_iv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_rdv_person_iv"
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_person_iv"
+        tools:srcCompat="@drawable/call" />
+
+    <EditText
+        android:id="@+id/new_rdv_phone_ep"
+        android:layout_width="221dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints="contact"
+        android:ems="10"
+        android:hint="@string/new_rdv_phone_ep"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/new_rdv_person_ep"
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_person_ep"
+        tools:ignore="TextFields" />
+
+    <ImageView
+        android:id="@+id/new_rdv_address_iv"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="44dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/new_rdv_address_ed"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_rdv_phone_iv"
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_phone_iv"
+        tools:srcCompat="@drawable/address" />
+
+    <EditText
+        android:id="@+id/new_rdv_address_ed"
+        android:layout_width="221dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints="contact"
+        android:ems="10"
+        android:hint="@string/new_rdv_address_ed"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/new_rdv_phone_ep"
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_phone_ep"
         tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/new_rdv_button_validate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="44dp"
         android:onClick="saveRdv"
         android:text="@string/new_rdv_button_validate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/new_rdv_address_ed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
