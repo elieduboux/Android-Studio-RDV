@@ -47,10 +47,7 @@ public class RdvDetail extends AppCompatActivity {
         cbOver   = findViewById(R.id.rdv_details_over);
         etDate   = findViewById(R.id.editTextDate);
         imDate   = findViewById(R.id.rdv_details_date_icon);
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-            imDate.setImageResource(R.drawable.day_calendar_night);
-        else
-            imDate.setImageResource(R.drawable.day_calendar);
+        imDate.setImageResource(R.drawable.day_calendar);
         
         myHelper = new DataBaseHelper(this);
         myHelper.open();
