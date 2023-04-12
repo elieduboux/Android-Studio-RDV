@@ -8,24 +8,31 @@
     <string name="settings">Settings</string>
 
 
-    <!--   *** VALUES IN RES FOLDER***-->
+    <!--   *** VALUES IN RES FOLDER ***-->
     <string name="profile_image_content_text">Profile</string>
 
     <string name="rdv_list_title">title</string>
-    <string name="rdv_list_over">over</string>
+    <string name="rdv_list_state">over</string>
     <string name="rdv_list_tv_id">id</string>
+    <string name="rdv_list_id_text">RDV id :</string>
+    <string name="rdv_list_et_time">time</string>
+    <string name="rdv_list_et_person">person</string>
 
     <string name="rdv_details_button">validate</string>
     <string name="rdv_details_hint_date">Ex : mm-dd-yyyy</string>
+    <string name="rdv_details_hint_time">Ex : hh:mm</string>
+    <string name="rdv_details_hint_person">Name</string>
 
     <string name="text_view">Text View</string>
 
-    <string name="settings_volume">Volume</string>
+    <string name="settings_volume">Music</string>
     <string name="setting_dark_mode">Dark Mode</string>
 
     <string name="new_rdv_title_tv">Title</string>
     <string name="new_rdv_title_et">Ex : My new rdv</string>
     <string name="new_rdv_date_et">Ex : mm-dd-yyyy</string>
+    <string name="new_rdv_time_et">Ex : hh:mm</string>
+    <string name="new_rdv_person_ep">Name</string>
     <string name="new_rdv_button_validate">Validate</string>
 
     <string name="menu_settings">Settings</string>

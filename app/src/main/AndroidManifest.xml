@@ -18,6 +18,7 @@
             android:name=".Settings" android:exported="false" android:label="@string/settings"/>
         <activity
             android:name=".NewRdv" android:exported="false" android:label="@string/new_rdv"/>
+        <service android:name=".MusicService" android:enabled="true"/>
 
         <activity
             android:name=".RdvList" android:label="@string/rdv_list" android:exported="true">
