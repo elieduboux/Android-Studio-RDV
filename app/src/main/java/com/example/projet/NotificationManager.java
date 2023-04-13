@@ -26,19 +26,26 @@ import androidx.core.app.NotificationManagerCompat;
 public class NotificationManager extends BroadcastReceiver {
     static String CHANNEL_ID= "channel_01";
     static int NOTIFICATION_ID = 100;
+    static int REQUEST_CODE= 200;
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         createNotificationChannel(context);
 
-        Notification notification = new NotificationCompat.Builder(context)
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        NotificationCompat.Builder notificationBuilder = new
+                NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.day_calendar)
                 .setContentTitle(intent.getStringExtra("title"))
                 .setContentText(intent.getStringExtra("text"))
-                .build();
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        sendNotification(context,notification);
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED)
+            return;
+        notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
     }
 
     @SuppressLint("ObsoleteSdkInt")
@@ -57,14 +64,7 @@ public class NotificationManager extends BroadcastReceiver {
 
     private void sendNotification(Context context, Notification notification)
     {
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-//        if(!prefs.getBoolean("Notifications",false))
-//            return;
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
-                        != PackageManager.PERMISSION_GRANTED)
-            return;
-        notificationManager.notify(NOTIFICATION_ID, notification);
+
     }
 
     public static void scheduleNotification(Context context, long time, String title, String text) {
@@ -72,8 +72,8 @@ public class NotificationManager extends BroadcastReceiver {
         intent.putExtra("title", title);
         intent.putExtra("text", text);
         @SuppressLint("UnspecifiedImmutableFlag")
-        PendingIntent pending = PendingIntent.getBroadcast(context, 42, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pending = PendingIntent.getBroadcast(context, REQUEST_CODE, intent,
+                PendingIntent.FLAG_ONE_SHOT);
         // Schdedule notification
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pending);
