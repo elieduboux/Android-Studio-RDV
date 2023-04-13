@@ -29,8 +29,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/rdv_details_over"
@@ -41,6 +40,20 @@
         app:layout_constraintStart_toEndOf="@+id/rdv_details_ed_title"
         app:layout_constraintTop_toTopOf="@+id/rdv_details_ed_title" />
 
+    <ImageView
+        android:id="@+id/rdv_list_share_iv"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:onClick="shareRdv"
+        android:scaleType="centerInside"
+        android:src="@drawable/share"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDate"
+        app:layout_constraintStart_toEndOf="@+id/editTextDate"
+        app:layout_constraintTop_toTopOf="@+id/editTextDate"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/share" />
 
     <ImageView
         android:id="@+id/rdv_details_date_icon"
@@ -137,7 +150,7 @@
 
     <EditText
         android:id="@+id/editPhonePerson"
-         android:layout_width="206dp"
+        android:layout_width="206dp"
         android:layout_height="46dp"
         android:autofillHints="person"
         android:ems="10"

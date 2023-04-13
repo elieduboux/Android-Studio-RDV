@@ -130,12 +130,12 @@
         android:layout_marginTop="36dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
-        android:src="@drawable/person"
+        android:src="@drawable/profile"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time_icon"
-        tools:srcCompat="@drawable/person" />
+        tools:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/rdv_list_item_person"
@@ -187,13 +187,13 @@
         android:layout_marginTop="40dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
-        android:src="@drawable/address"
+        android:src="@drawable/profile"
         android:onClick="launchMaps"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_phone_icon"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_phone_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_phone_icon"
-        tools:srcCompat="@drawable/address" />
+        tools:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/rdv_list_item_address"

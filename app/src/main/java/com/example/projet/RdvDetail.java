@@ -78,7 +78,7 @@ public class RdvDetail extends AppCompatActivity {
 
         etPerson = findViewById(R.id.editTextPerson);
         imPerson = findViewById(R.id.rdv_details_person_icon);
-        imPerson.setImageResource(R.drawable.person);
+        imPerson.setImageResource(R.drawable.profile);
 
         etPhone = findViewById(R.id.editPhonePerson);
         imPhone = findViewById(R.id.rdv_details_phone_icon);
@@ -86,7 +86,7 @@ public class RdvDetail extends AppCompatActivity {
 
         etAddress = findViewById(R.id.editAddressPerson);
         imAddress = findViewById(R.id.rdv_details_address_icon);
-        imAddress.setImageResource(R.drawable.address);
+        imAddress.setImageResource(R.drawable.profile);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();
@@ -182,6 +182,20 @@ public class RdvDetail extends AppCompatActivity {
             Intent main = new Intent(this,RdvList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(main);
         }
+    }
+
+    public void shareRdv(View view){
+        Intent sendIntent = new Intent();
+        String textToShare = "Title : " + rdv.title + "\n" +
+                "Date : " + rdv.date + "\n" +
+                "Time : " + rdv.time + "\n" +
+                "Contact : " + rdv.person + "\n" +
+                "Phone : " + rdv.phone + "\n" +
+                "Address : " + rdv.address + "\n";
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, "Share Rdv"));
     }
 
     DatePickerDialog.OnDateSetListener onDate = new DatePickerDialog.OnDateSetListener() {

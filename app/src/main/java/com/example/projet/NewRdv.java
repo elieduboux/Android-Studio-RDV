@@ -38,10 +38,6 @@ public class NewRdv extends AppCompatActivity {
     private EditText etAddress;
     private ImageView imAddress;
 
-
-
-
-
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_rdv);
@@ -58,12 +54,12 @@ public class NewRdv extends AppCompatActivity {
         imTime = findViewById(R.id.new_rdv_time_iv);
         imTime.setImageResource(R.drawable.clock_calendar);
         imPerson = findViewById(R.id.new_rdv_person_iv);
-        imPerson.setImageResource(R.drawable.person);
+        imPerson.setImageResource(R.drawable.profile);
 
         imPhone = findViewById(R.id.new_rdv_phone_iv);
         imPhone.setImageResource(R.drawable.call);
         imAddress = findViewById(R.id.new_rdv_address_iv);
-        imAddress.setImageResource(R.drawable.address);
+        imAddress.setImageResource(R.drawable.profile);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();
@@ -147,8 +143,15 @@ public class NewRdv extends AppCompatActivity {
         String phone = etPhone.getText().toString();
         String address = etAddress.getText().toString();
 
-
         Rdv rdv = new Rdv(title,date,time,person,phone, address,false);
+        String textToNotification =
+                "Date : " + date + "\n" +
+                "Time : " + time + "\n" +
+                "Contact : " + person + "\n" +
+                "Phone : " + phone + "\n" +
+                "Address : " + address + "\n";
+
+        NotificationManager.scheduleNotification(this,1,title,textToNotification);
 
         myHelper.add(rdv);
         Intent intent = new Intent(this,RdvList.class).

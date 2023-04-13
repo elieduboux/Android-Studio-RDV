@@ -49,8 +49,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     public void open() throws SQLException {
         database = this.getWritableDatabase();
-        //database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        //onCreate(database);
+//        database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+//        onCreate(database);
     }
     public void close() {
         database.close();
