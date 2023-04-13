@@ -78,7 +78,7 @@ public class RdvDetail extends AppCompatActivity {
 
         etPerson = findViewById(R.id.editTextPerson);
         imPerson = findViewById(R.id.rdv_details_person_icon);
-        imPerson.setImageResource(R.drawable.profile);
+        imPerson.setImageResource(R.drawable.person);
 
         etPhone = findViewById(R.id.editPhonePerson);
         imPhone = findViewById(R.id.rdv_details_phone_icon);
@@ -86,7 +86,7 @@ public class RdvDetail extends AppCompatActivity {
 
         etAddress = findViewById(R.id.editAddressPerson);
         imAddress = findViewById(R.id.rdv_details_address_icon);
-        imAddress.setImageResource(R.drawable.profile);
+        imAddress.setImageResource(R.drawable.address);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();

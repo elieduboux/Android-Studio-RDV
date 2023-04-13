@@ -54,12 +54,12 @@ public class NewRdv extends AppCompatActivity {
         imTime = findViewById(R.id.new_rdv_time_iv);
         imTime.setImageResource(R.drawable.clock_calendar);
         imPerson = findViewById(R.id.new_rdv_person_iv);
-        imPerson.setImageResource(R.drawable.profile);
+        imPerson.setImageResource(R.drawable.person);
 
         imPhone = findViewById(R.id.new_rdv_phone_iv);
         imPhone.setImageResource(R.drawable.call);
         imAddress = findViewById(R.id.new_rdv_address_iv);
-        imAddress.setImageResource(R.drawable.profile);
+        imAddress.setImageResource(R.drawable.address);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();

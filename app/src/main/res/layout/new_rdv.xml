@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="@+id/new_rdv_time_iv"
         app:layout_constraintStart_toStartOf="@+id/new_rdv_time_iv"
         app:layout_constraintTop_toBottomOf="@+id/new_rdv_time_iv"
-        tools:srcCompat="@drawable/profile" />
+        tools:srcCompat="@drawable/person" />
 
     <EditText
         android:id="@+id/new_rdv_person_ep"
@@ -153,7 +153,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/new_rdv_phone_iv"
         app:layout_constraintTop_toBottomOf="@+id/new_rdv_phone_iv"
-        tools:srcCompat="@drawable/profile" />
+        tools:srcCompat="@drawable/address" />
 
     <EditText
         android:id="@+id/new_rdv_address_ed"

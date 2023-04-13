@@ -62,8 +62,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(DATE,rdv.getDate());
         contentValues.put(TIME,rdv.getTime());
         contentValues.put(PERSON,rdv.getPerson());
-        contentValues.put(PHONE,rdv.getPerson());
-        contentValues.put(ADDRESS,rdv.getPerson());
+        contentValues.put(PHONE,rdv.getPhone());
+        contentValues.put(ADDRESS,rdv.getAddress());
         contentValues.put(STATE,rdv.getState());
         database.insert(TABLE_NAME,null,contentValues);
     }

@@ -79,20 +79,20 @@
         app:layout_constraintStart_toEndOf="@+id/rdv_list_item_title"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_state" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/rdv_list_share_iv"-->
-<!--        android:layout_width="43dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:contentDescription="@string/profile_image_content_text"-->
-<!--        android:scaleType="centerInside"-->
-<!--        android:src="@drawable/share"-->
-<!--        android:onClick="shareRdv"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_id_text"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_tv_id"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_id_text"-->
-<!--        app:layout_constraintVertical_bias="0.565"-->
-<!--        tools:srcCompat="@drawable/share" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/rdv_list_share_iv"-->
+    <!--        android:layout_width="43dp"-->
+    <!--        android:layout_height="42dp"-->
+    <!--        android:layout_marginStart="24dp"-->
+    <!--        android:contentDescription="@string/profile_image_content_text"-->
+    <!--        android:scaleType="centerInside"-->
+    <!--        android:src="@drawable/share"-->
+    <!--        android:onClick="shareRdv"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/rdv_list_item_id_text"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/rdv_list_item_tv_id"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/rdv_list_item_id_text"-->
+    <!--        app:layout_constraintVertical_bias="0.565"-->
+    <!--        tools:srcCompat="@drawable/share" />-->
 
     <ImageView
         android:id="@+id/rdv_list_item_time_icon"
@@ -130,12 +130,12 @@
         android:layout_marginTop="36dp"
         android:contentDescription="@string/profile_image_content_text"
         android:scaleType="centerInside"
-        android:src="@drawable/profile"
+        android:src="@drawable/person"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_time_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_time_icon"
-        tools:srcCompat="@drawable/profile" />
+        tools:srcCompat="@drawable/person" />
 
     <TextView
         android:id="@+id/rdv_list_item_person"
@@ -186,27 +186,23 @@
         android:layout_height="33dp"
         android:layout_marginTop="40dp"
         android:contentDescription="@string/profile_image_content_text"
-        android:scaleType="centerInside"
-        android:src="@drawable/profile"
         android:onClick="launchMaps"
+        android:scaleType="centerInside"
+        android:src="@drawable/address"
         app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_phone_icon"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_phone_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_phone_icon"
-        tools:srcCompat="@drawable/profile" />
+        tools:srcCompat="@drawable/address" />
 
     <TextView
         android:id="@+id/rdv_list_item_address"
-        android:layout_width="81dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:padding="25dp"
         android:text="@string/rdv_list_et_person"
         android:textColor="@color/teal_700"
         android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/rdv_list_item_phone"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_list_item_phone"
         app:layout_constraintTop_toBottomOf="@+id/rdv_list_item_phone"
         tools:text="Address" />

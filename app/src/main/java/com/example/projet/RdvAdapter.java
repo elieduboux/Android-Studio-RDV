@@ -90,11 +90,11 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtDate.setText(rdv.date);
             holder.imTime.setImageResource(R.drawable.clock_calendar);
             holder.txtTime.setText(rdv.time);
-            holder.imPerson.setImageResource(R.drawable.profile);
+            holder.imPerson.setImageResource(R.drawable.person);
             holder.txtPerson.setText(rdv.person);
             holder.imPhone.setImageResource(R.drawable.call);
             holder.txtPhone.setText(rdv.phone);
-            holder.imAddress.setImageResource(R.drawable.profile);
+            holder.imAddress.setImageResource(R.drawable.address);
             holder.txtAddress.setText(rdv.address);
         }
 
