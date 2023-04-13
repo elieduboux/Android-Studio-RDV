@@ -78,10 +78,10 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/rdv_details_button"
         app:layout_constraintEnd_toEndOf="@+id/rdv_details_person_icon"
-        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rdv_details_date_icon"
         app:layout_constraintTop_toBottomOf="@+id/rdv_details_date_icon"
-        app:layout_constraintVertical_bias="0.174"
+        app:layout_constraintVertical_bias="0.102"
         tools:srcCompat="@drawable/clock_calendar" />
 
     <EditText
@@ -118,23 +118,76 @@
         android:ems="10"
         android:hint="@string/rdv_details_hint_person"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/rdv_details_button"
         app:layout_constraintEnd_toEndOf="@+id/editTextTime"
         app:layout_constraintStart_toStartOf="@+id/editTextTime"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+
+
+    <ImageView
+        android:id="@+id/rdv_details_phone_icon"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="52dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:onClick="phoneCall"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/rdv_details_person_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_details_person_icon"
+        tools:srcCompat="@drawable/call" />
+
+    <EditText
+        android:id="@+id/editPhonePerson"
+         android:layout_width="206dp"
+        android:layout_height="46dp"
+        android:autofillHints="person"
+        android:ems="10"
+        android:hint="@string/rdv_details_hint_phone"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/rdv_details_button"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPerson"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextPerson"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPerson"
+        app:layout_constraintVertical_bias="0.183" />
+
+    <ImageView
+        android:id="@+id/rdv_details_address_icon"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/profile_image_content_text"
+        android:onClick="launchMaps"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/rdv_details_phone_icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rdv_details_phone_icon"
+        app:layout_constraintTop_toBottomOf="@+id/rdv_details_phone_icon"
+        tools:srcCompat="@drawable/address" />
+
+    <EditText
+        android:id="@+id/editAddressPerson"
+        android:layout_width="206dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="88dp"
+        android:autofillHints="person"
+        android:ems="10"
+        android:hint="@string/rdv_details_hint_address"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/rdv_details_button"
+        app:layout_constraintEnd_toEndOf="@+id/editPhonePerson"
+        app:layout_constraintStart_toStartOf="@+id/editPhonePerson" />
 
     <Button
         android:id="@+id/rdv_details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="476dp"
+        android:layout_marginTop="264dp"
         android:onClick="onValidate"
         android:text="@string/rdv_details_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPerson" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

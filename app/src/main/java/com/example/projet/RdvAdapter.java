@@ -1,10 +1,7 @@
 package com.example.projet;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,25 +30,37 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
         TextView txtTime;
         ImageView imPerson;
         TextView txtPerson;
-//        ImageView imShare;
+
+        ImageView imPhone;
+        TextView txtPhone;
+
+        ImageView imAddress;
+        TextView txtAddress;
+
+
 
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
+    {
         ViewHolder holder = null;
-        if(convertView == null){
+        if(convertView == null)
+        {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.rdv_list_item,null, false);
-            TextView txtTitle  = convertView.findViewById(R.id.rdv_list_item_title);
-            CheckBox cbOver    = convertView.findViewById(R.id.rdv_list_item_state);
-            ImageView imDate   = convertView.findViewById(R.id.rdv_list_item_date_icon);
-            TextView txtDate   = convertView.findViewById(R.id.rdv_list_item_date);
-            ImageView imTime   = convertView.findViewById(R.id.rdv_list_item_time_icon);
-            TextView txtTime   = convertView.findViewById(R.id.rdv_list_item_time);
-            ImageView imPerson = convertView.findViewById(R.id.rdv_list_item_person_icon);
+            TextView txtTitle = convertView.findViewById(R.id.rdv_list_item_title);
+            CheckBox cbOver   = convertView.findViewById(R.id.rdv_list_item_state);
+            ImageView imDate  = convertView.findViewById(R.id.rdv_list_item_date_icon);
+            TextView txtDate  = convertView.findViewById(R.id.rdv_list_item_date);
+            ImageView imTime  = convertView.findViewById(R.id.rdv_list_item_time_icon);
+            TextView txtTime  = convertView.findViewById(R.id.rdv_list_item_time);
+            ImageView imPerson  = convertView.findViewById(R.id.rdv_list_item_person_icon);
             TextView txtPerson = convertView.findViewById(R.id.rdv_list_item_person);
-//            ImageView imShare  = convertView.findViewById(R.id.rdv_list_share_iv);
+            ImageView imPhone  = convertView.findViewById(R.id.rdv_list_item_phone_icon);
+            TextView txtPhone = convertView.findViewById(R.id.rdv_list_item_phone);
+            ImageView imAddress  = convertView.findViewById(R.id.rdv_list_item_address_icon);
+            TextView txtAddress = convertView.findViewById(R.id.rdv_list_item_address);
 
             holder = new ViewHolder();
             holder.txtTitle  = txtTitle;
@@ -62,7 +71,10 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtTime   = txtTime;
             holder.imPerson  = imPerson;
             holder.txtPerson = txtPerson;
-//            holder.imShare   = imShare;
+            holder.imPhone  = imPhone;
+            holder.txtPhone = txtPhone;
+            holder.imAddress  = imAddress;
+            holder.txtAddress = txtAddress;
 
             convertView.setTag(holder);
         }
@@ -70,7 +82,8 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder = (ViewHolder) convertView.getTag();
 
         Rdv rdv = getItem(position);
-        if (rdv != null) {
+        if (rdv != null)
+        {
             holder.txtTitle.setText(rdv.title);
             holder.cbOver.setChecked(rdv.state);
             holder.imDate.setImageResource(R.drawable.day_calendar);
@@ -79,26 +92,13 @@ public class RdvAdapter extends ArrayAdapter<Rdv> {
             holder.txtTime.setText(rdv.time);
             holder.imPerson.setImageResource(R.drawable.person);
             holder.txtPerson.setText(rdv.person);
+            holder.imPhone.setImageResource(R.drawable.call);
+            holder.txtPhone.setText(rdv.phone);
+            holder.imAddress.setImageResource(R.drawable.address);
+            holder.txtAddress.setText(rdv.address);
 
-//            holder.imShare.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent sendIntent = new Intent();
-//
-//                    String textToShare = "Title : " + rdv.title + "\n" +
-//                            "Date : " + rdv.date + "\n" +
-//                            "Time : " + rdv.time + "\n" +
-//                            "Contact : " + rdv.person + "\n";
-//                    sendIntent.setAction(Intent.ACTION_SEND);
-//                    sendIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
-//                    sendIntent.setType("text/plain");
-////                    myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-////                    startActivity(Intent.createChooser(sendIntent, "Share App"));
-//                }
-//
-//            });
+
         }
-
         return convertView;
     }
 }

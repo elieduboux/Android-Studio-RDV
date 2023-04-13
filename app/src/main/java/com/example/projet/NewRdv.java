@@ -32,6 +32,13 @@ public class NewRdv extends AppCompatActivity {
     private EditText etPerson;
     private ImageView imPerson;
 
+    private EditText etPhone;
+    private ImageView imPhone;
+
+    private EditText etAddress;
+    private ImageView imAddress;
+
+
 
 
 
@@ -43,6 +50,8 @@ public class NewRdv extends AppCompatActivity {
         etDate   = findViewById(R.id.new_rdv_date_ed);
         etTime= findViewById(R.id.new_rdv_time_et);
         etPerson = findViewById(R.id.new_rdv_person_ep);
+        etPhone = findViewById(R.id.new_rdv_phone_ep);
+        etAddress = findViewById(R.id.new_rdv_address_ed);
 
         imDate   = findViewById(R.id.new_rdv_date_iv);
         imDate.setImageResource(R.drawable.day_calendar);
@@ -50,6 +59,11 @@ public class NewRdv extends AppCompatActivity {
         imTime.setImageResource(R.drawable.clock_calendar);
         imPerson = findViewById(R.id.new_rdv_person_iv);
         imPerson.setImageResource(R.drawable.person);
+
+        imPhone = findViewById(R.id.new_rdv_phone_iv);
+        imPhone.setImageResource(R.drawable.call);
+        imAddress = findViewById(R.id.new_rdv_address_iv);
+        imAddress.setImageResource(R.drawable.address);
 
         myHelper = new DataBaseHelper(this);
         myHelper.open();
@@ -130,8 +144,11 @@ public class NewRdv extends AppCompatActivity {
         String date   = etDate.getText().toString();
         String time   = etTime.getText().toString();
         String person = etPerson.getText().toString();
+        String phone = etPhone.getText().toString();
+        String address = etAddress.getText().toString();
 
-        Rdv rdv = new Rdv(title,date,time,person,false);
+
+        Rdv rdv = new Rdv(title,date,time,person,phone, address,false);
 
         myHelper.add(rdv);
         Intent intent = new Intent(this,RdvList.class).

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -24,22 +27,26 @@ import java.util.ArrayList;
 public class RdvList extends AppCompatActivity {
     private DataBaseHelper myHelper;
     private ListView lvRdvs;
+    private ImageView imAddress;
+    private EditText etAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rdv_list);
+
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             setTheme(R.style.darkTheme); //when dark mode is enabled, we use the dark theme
         } else {
             setTheme(R.style.AppTheme);  //default app theme
         }
-
         myHelper = new DataBaseHelper(this);
         myHelper.open();
-
+        //etAddress = findViewById(R.id.rdv_list_item_address);
         lvRdvs = (ListView) findViewById(R.id.myListView);
         lvRdvs.setEmptyView(findViewById(R.id.tvEmpty));
+
+
 
         chargeData();
         registerForContextMenu(lvRdvs);
@@ -52,10 +59,12 @@ public class RdvList extends AppCompatActivity {
                 String dateItem= ((TextView)view.findViewById(R.id.rdv_list_item_date)).getText().toString();
                 String timeItem = ((TextView) view.findViewById(R.id.rdv_list_item_time)).getText().toString();
                 String personItem = ((TextView) view.findViewById(R.id.rdv_list_item_person)).getText().toString();
+                String phoneItem = ((TextView) view.findViewById(R.id.rdv_list_item_phone)).getText().toString();
+                String addressItem = ((TextView) view.findViewById(R.id.rdv_list_item_address)).getText().toString();
                 CheckBox cbState = view.findViewById(R.id.rdv_list_item_state);
                 Boolean stateItem = cbState.isChecked();
 
-                Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,timeItem,personItem,stateItem);
+                Rdv rdv= new Rdv(Integer.parseInt(idItem),titleItem,dateItem,timeItem,personItem,phoneItem,addressItem,stateItem);
                 Intent intent = new Intent(getApplicationContext(), RdvDetail.class);
                 intent.putExtra("rdv",rdv);
 
@@ -65,7 +74,11 @@ public class RdvList extends AppCompatActivity {
             }
         });
      }
-
+    //public void launchMaps(View view) {
+        //String address = etAddress.getText().toString();
+       // String map = "http://maps.google.co.in/maps?q=" + address ; Uri gmmIntentUri = Uri.parse(map);
+       // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+      //  mapIntent.setPackage("com.google.android.apps.maps"); startActivity(mapIntent);}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
@@ -113,10 +126,10 @@ public class RdvList extends AppCompatActivity {
 
     public void chargeData(){
         final String[] from = new String[]{DataBaseHelper._ID, DataBaseHelper.TITLE,
-                DataBaseHelper.DATE,DataBaseHelper.TIME, DataBaseHelper.PERSON, DataBaseHelper.STATE};
+                DataBaseHelper.DATE,DataBaseHelper.TIME, DataBaseHelper.PERSON,DataBaseHelper.PHONE,DataBaseHelper.ADDRESS, DataBaseHelper.STATE};
         final int[]to= new int[]{
                 R.id.rdv_list_item_tv_id,R.id.rdv_list_item_title, R.id.rdv_list_item_date,
-                R.id.rdv_list_item_time, R.id.rdv_list_item_person,R.id.rdv_list_item_state};
+                R.id.rdv_list_item_time, R.id.rdv_list_item_person,R.id.rdv_list_item_phone,R.id.rdv_list_item_address,R.id.rdv_list_item_state};
 
         Cursor c = myHelper.getAllRdv();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.rdv_list_item,c,from,to,0);

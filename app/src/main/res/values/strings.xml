@@ -22,6 +22,8 @@
     <string name="rdv_details_hint_date">Ex : mm-dd-yyyy</string>
     <string name="rdv_details_hint_time">Ex : hh:mm</string>
     <string name="rdv_details_hint_person">Name</string>
+    <string name="rdv_details_hint_phone">Phone number</string>
+    <string name="rdv_details_hint_address">Localisation</string>
 
     <string name="text_view">Text View</string>
 
@@ -33,6 +35,8 @@
     <string name="new_rdv_date_et">Ex : mm-dd-yyyy</string>
     <string name="new_rdv_time_et">Ex : hh:mm</string>
     <string name="new_rdv_person_ep">Name</string>
+    <string name="new_rdv_phone_ep">Phone</string>
+    <string name="new_rdv_address_ed">Localisation</string>
     <string name="new_rdv_button_validate">Validate</string>
 
     <string name="menu_settings">Settings</string>

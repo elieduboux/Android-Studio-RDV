@@ -3,6 +3,8 @@ package com.example.projet;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,10 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.Manifest;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -32,12 +38,16 @@ public class RdvDetail extends AppCompatActivity {
     private CheckBox  cbOver;
     private ImageView imDate;
     private ImageView imTime;
+    private ImageView imPhone;
+    private ImageView imAddress;
     private int year,month,day;
 
     private int hours, minutes;
     private EditText etDate;
     private EditText etTime;
     private EditText etPerson;
+    private EditText etPhone;
+    private EditText etAddress;
     private ImageView imPerson;
     private Rdv rdv;
     private int idValue;
@@ -45,7 +55,10 @@ public class RdvDetail extends AppCompatActivity {
     private String dateValue;
     private String timeValue;
     private String personValue;
+    private String phoneValue;
+    private String addressValue;
     private boolean fromAdd;
+    private static final int REQUEST_CALL =1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +79,15 @@ public class RdvDetail extends AppCompatActivity {
         etPerson = findViewById(R.id.editTextPerson);
         imPerson = findViewById(R.id.rdv_details_person_icon);
         imPerson.setImageResource(R.drawable.person);
+
+        etPhone = findViewById(R.id.editPhonePerson);
+        imPhone = findViewById(R.id.rdv_details_phone_icon);
+        imPhone.setImageResource(R.drawable.call);
+
+        etAddress = findViewById(R.id.editAddressPerson);
+        imAddress = findViewById(R.id.rdv_details_address_icon);
+        imAddress.setImageResource(R.drawable.address);
+
         myHelper = new DataBaseHelper(this);
         myHelper.open();
 
@@ -81,12 +103,16 @@ public class RdvDetail extends AppCompatActivity {
             dateValue = rdv.getDate();
             timeValue = rdv.getTime();
             personValue = rdv.getPerson();
+            phoneValue = rdv.getPhone();
+            addressValue = rdv.getAddress();
 
 
             String title  = rdv.getTitle();
             String date   = rdv.getDate();
             String time = rdv.getTime();
             String person = rdv.getPerson();
+            String phone = rdv.getPhone();
+            String address = rdv.getAddress();
             Boolean state = rdv.getState();
 
             etTitle.setHint(title);
@@ -94,6 +120,8 @@ public class RdvDetail extends AppCompatActivity {
             etDate.setText(date);
             etTime.setText(time);
             etPerson.setText(person);
+            etPhone.setText(phone);
+            etAddress.setText(address);
         };
     }
 
@@ -103,6 +131,8 @@ public class RdvDetail extends AppCompatActivity {
         String  date  = etDate.getText().toString();
         String  time  = etTime.getText().toString();
         String person = etPerson.getText().toString();
+        String phone = etPhone.getText().toString();
+        String address = etAddress.getText().toString();
         Boolean state = cbOver.isChecked();
         if (title.equals(""))
         {
@@ -116,9 +146,17 @@ public class RdvDetail extends AppCompatActivity {
         {
             time = timeValue;
         }
-        if (time.equals(""))
+        if (person.equals(""))
         {
             person = personValue;
+        }
+        if (phone.equals(""))
+        {
+            phone = phoneValue;
+        }
+        if (address.equals(""))
+        {
+            address = addressValue;
         }
 //        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
 //        LocalDate rdvDate = LocalDate.parse(date);
@@ -131,14 +169,14 @@ public class RdvDetail extends AppCompatActivity {
 //        }
 
         if(fromAdd) {
-            Rdv rdv = new Rdv(title,date,time,person,state);
+            Rdv rdv = new Rdv(title,date,time,person,phone, address,state);
             myHelper.add(rdv);
 
             Intent main = new Intent(this,RdvList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(main);
         }
         else {
-            Rdv rdv = new Rdv(idValue,title,date,time,person,state);
+            Rdv rdv = new Rdv(idValue,title,date,time,person,phone, address,state);
             myHelper.update(rdv); //Can return the "count" of the update but not useful here.
 
             Intent main = new Intent(this,RdvList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -191,6 +229,41 @@ public class RdvDetail extends AppCompatActivity {
         time.setArguments(args);
         time.setCallBack(onTime);
         time.show(getSupportFragmentManager(),"Time Picker");
+    }
+    public void launchMaps(View view) {
+        String map = "http://maps.google.co.in/maps?q=" + etAddress.getText() ; Uri gmmIntentUri = Uri.parse(map);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps"); startActivity(mapIntent);
+    }
+
+    public void phoneCall(View v){
+        makePhoneCall();
+    }
+    private  void makePhoneCall(){
+        String phone = etPhone.getText().toString();
+        if (phone.trim().length()>0){
+            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(RdvDetail.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            }else{
+                String dial = "tel:" + phone;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+            }
+
+        }else{
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String [] permissions, @NonNull int [] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            } else {
+                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
